@@ -3,7 +3,8 @@ import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import LoginLayout from "./components/LoginLayout.tsx";
 import {SignIn} from "./pages/SignIn.tsx";
 import RootLayout from "./components/RootLayout.tsx";
-import {HomePage} from "./pages/HomePage.tsx";
+import {HomePage } from "./pages/HomePage"; 
+
 import {HistoryPage} from "./pages/HistoryPage.tsx";
 import {ReviewPage} from "./pages/ReviewPage.tsx";
 import {SignUp} from "./pages/SignUp.tsx";
