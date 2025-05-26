@@ -32,7 +32,7 @@ export const Footer = () => {
                     <h3 className="font-semibold text-lg mb-2">Address</h3>
                     <p className="text-gray-300">
                         microminds@gmail.com<br />
-                        Kandawala, Weniwelkola, Sri Lanka<br />
+                        MicroMinds Group Pvt. Ltd, Colombo, Sri Lanka<br />
                         +94 71 234 5678
                     </p>
                 </div>
