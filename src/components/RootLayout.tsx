@@ -8,7 +8,8 @@ const RootLayout = () => {
             <div className="bg-gray-800 text-white">
                 <Navigation />
             </div>
-            <main className="flex-grow pt-20 bg-[#f0ede7]">
+            <main className="flex-grow pt-6 bg-[#f0ede7]">
+
                 <Outlet />
             </main>
             <Footer />

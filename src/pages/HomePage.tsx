@@ -1,4 +1,6 @@
 import React from "react";
+import chessImage from "../assets/chess.jpg";
+
 
 export const HomePage = () => {
     return (
@@ -7,9 +9,9 @@ export const HomePage = () => {
                 {/* Image */}
                 <div className="mb-8">
                     <img
-                        src="/chess.png" // Place your image in `public/chess.png`
-                        alt="Design preview"
-                        className="w-48 h-48 mx-auto rounded-lg object-contain shadow-md"
+                      src={chessImage}
+                      alt="Design preview"
+                      className="w-48 h-48 mx-auto rounded-lg object-contain shadow-md"
                     />
                 </div>
 

@@ -13,7 +13,7 @@ export function Navigation() {
     return (
         <>
             {/* Fixed Navigation Bar */}
-            <header className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white flex justify-between items-center px-4 py-4 sm:px-8 fixed top-0 left-0 w-full z-40 shadow-md h-16 sm:h-20">
+            <header className="bg-[#344E41] text-white flex justify-between items-center px-4 py-4 sm:px-8 fixed top-0 left-0 w-full z-40 shadow-md h-16 sm:h-20">
                 <div className="flex items-center">
                     {/* Mobile Menu Toggle */}
                     <button
