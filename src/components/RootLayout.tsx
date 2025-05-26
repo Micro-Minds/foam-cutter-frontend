@@ -1,21 +1,18 @@
 import {Outlet} from "react-router-dom";
 import {Navigation} from "./Naviagtions.tsx";
+import { Footer } from "./Footer";
 
 const RootLayout = () => {
     return (
-
-        <>
+        <div className="flex flex-col min-h-screen bg-white">
             <div className="bg-gray-800 text-white">
-                <Navigation/>
+                <Navigation />
             </div>
-
-            {/* Main Content */}
-            <main className="flex-1 p-0 mt-10 h-24 overflow-auto bg-white">
-                <Outlet/>
+            <main className="flex-grow pt-20 bg-[#f0ede7]">
+                <Outlet />
             </main>
-        </>
-
-
+            <Footer />
+        </div>
     );
 };
 
