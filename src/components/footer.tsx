@@ -11,7 +11,7 @@ export const Footer = () => {
                     <h3 className="font-semibold text-lg mb-2">Microminds</h3>
                     <ul className="space-y-1">
                         <li><Link to="/app/home" className="hover:text-green-300">Home</Link></li>
-                        <li><Link to="/app/history" className="hover:text-green-300">History</Link></li>
+                        <li><Link to="/app/library" className="hover:text-green-300">Library</Link></li>
                         <li><Link to="/app/about" className="hover:text-green-300">About</Link></li>
                         <li><Link to="/app/review" className="hover:text-green-300">Review</Link></li>
                     </ul>

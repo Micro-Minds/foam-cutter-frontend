@@ -2,7 +2,6 @@ import emma from "../assets/emma.png";
 import liam from "../assets/liam.png";
 import sophia from "../assets/sophia.png";
 
-
 export function ReviewPage() {
   return (
     <div className="bg-[#e5dfd5] min-h-screen pt-10 px-4 text-center">

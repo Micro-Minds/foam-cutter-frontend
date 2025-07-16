@@ -5,7 +5,7 @@ import {SignIn} from "./pages/SignIn.tsx";
 import RootLayout from "./components/RootLayout.tsx";
 import {HomePage } from "./pages/HomePage"; 
 
-import {HistoryPage} from "./pages/HistoryPage.tsx";
+import {LibraryPage} from "./pages/LibraryPage.tsx";
 import {AboutPage} from "./pages/AboutPage.tsx";
 import {ReviewPage} from "./pages/ReviewPage.tsx";
 import {SignUp} from "./pages/SignUp.tsx";
@@ -25,7 +25,7 @@ function App() {
             element: <RootLayout />,
             children: [
                 { path: "home", element: <HomePage /> },
-                { path: "history", element: <HistoryPage /> },  
+                { path: "library", element: <LibraryPage /> },  
                 { path: "about", element: <AboutPage /> },    
                 { path: "review", element: <ReviewPage /> },
 

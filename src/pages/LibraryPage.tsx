@@ -1,7 +1,7 @@
 import React from "react";
 import gearImage from "../assets/gear.png"; 
 
-export function HistoryPage() {
+export function LibraryPage() {
   return (
     <div className="bg-[#e5dfd5] min-h-screen pt-8">
       <h1 className="text-3xl font-bold text-center mb-6">My Saved Designs</h1>
