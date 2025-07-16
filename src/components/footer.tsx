@@ -4,7 +4,7 @@ import { FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 export const Footer = () => {
     return (
-        <footer className="bg-[#1f3a34] text-white py-10 px-4 mt-auto">
+        <footer className="bg-[#344E41] text-white py-10 px-4 mt-auto">
             <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm sm:text-base">
                 {/* Left column */}
                 <div>
