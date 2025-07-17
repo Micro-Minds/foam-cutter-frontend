@@ -30,7 +30,7 @@ export function Navigation() {
                 {/* Desktop Menu */}
                 <nav className="hidden sm:flex space-x-8 text-lg">
                     <Link to="/app/home" className="hover:text-sky-300 transition-colors">Home</Link>
-                    <Link to="/app/history" className="hover:text-sky-300 transition-colors">Library</Link>
+                    <Link to="/app/library" className="hover:text-sky-300 transition-colors">Library</Link>
                     <Link to="/app/about" className="hover:text-sky-300 transition-colors">About</Link>
                     <Link to="/app/review" className="hover:text-sky-300 transition-colors">Review</Link>
                     <Link to="/app/account" className="hover:text-sky-300 transition-colors">My Account</Link>
