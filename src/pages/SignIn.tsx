@@ -10,7 +10,7 @@ export function SignIn() {
     const handleSignIn = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Signing in", { email, password });
-        navigate("/app");
+        navigate("/app/home");
     };
 
     return (

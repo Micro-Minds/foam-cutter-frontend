@@ -3,7 +3,7 @@ import chessImage from "../assets/chess.jpg";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { sendGcodeToESP } from "../service/sendGCodeToEsp.ts";
-import { generateCircleGCode, generateRectangleGCode } from "../generateGCodes/genarateShapeGCode.ts";
+import {generateGCodeForCircle, generateRectangleGCode } from "../generateGCodes/genarateShapeGCode.ts";
 
 export const HomePage = () => {
   const [showShapeForm, setShowShapeForm] = useState(false);
@@ -27,7 +27,7 @@ export const HomePage = () => {
     if (shape === "circle") {
       const radiusNum = Number(circleRadius);
       if (isNaN(radiusNum)) return alert("❌ Invalid radius");
-      gcode = generateCircleGCode(radiusNum, feedRateNum, stepSizeNum);
+      gcode = generateGCodeForCircle(radiusNum, feedRateNum, stepSizeNum);
     }
 
     if (shape === "rectangle") {
