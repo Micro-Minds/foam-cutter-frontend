@@ -25,7 +25,7 @@ function App() {
             element: <RootLayout />,                                                          //use RootLayout 
             children: [
                 {index: true, element: <Navigate to="home" replace/>},                        //if URL is /app, render HomePage
-                { path: "home", element: <HomePage /> },                                      //if URL is /app/home, render HomePage (including navbar and footer)
+                { path: "home", element: <HomePage /> },                                      //if URL is /app/home(when user clicks on Home in navbar), render HomePage (including navbar and footer)
                 { path: "library", element: <LibraryPage /> },  
                 { path: "about", element: <AboutPage /> },    
                 { path: "review", element: <ReviewPage /> },
