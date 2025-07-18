@@ -31,6 +31,7 @@ export function Navigation() {
                 <nav className="hidden sm:flex space-x-8 text-lg">
                     <Link to="/app/home" className="hover:text-sky-300 transition-colors">Home</Link>
                     <Link to="/app/library" className="hover:text-sky-300 transition-colors">Library</Link>
+                    <Link to="/app/history" className="hover:text-sky-300 transition-colors">History</Link>
                     <Link to="/app/about" className="hover:text-sky-300 transition-colors">About</Link>
                     <Link to="/app/review" className="hover:text-sky-300 transition-colors">Review</Link>
                     <Link to="/app/account" className="hover:text-sky-300 transition-colors">My Account</Link>
@@ -43,7 +44,8 @@ export function Navigation() {
                     <ul className="space-y-2 px-6 py-4 text-lg">
                         <li><Link to="/app/home" className="block hover:text-sky-300">Home</Link></li>
                         <li><Link to="/app/review" className="block hover:text-sky-300">Review</Link></li>
-                        <li><Link to="/app/history" className="block hover:text-sky-300">Library</Link></li>
+                        <li><Link to="/app/library" className="block hover:text-sky-300">Library</Link></li>
+                        <li><Link to="/app/history" className="block hover:text-sky-300">History</Link></li>
                         <li><Link to="/app/account" className="block hover:text-sky-300">My Account</Link></li>
                         <li><button onClick={handleLogout} className="block text-left w-full hover:text-sky-300">Logout</button></li>
                     </ul>
