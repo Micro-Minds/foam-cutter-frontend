@@ -26,7 +26,7 @@ export const HomePage = () => {
 
     if (shape === "circle") {
       const radiusNum = Number(circleRadius);
-      if (isNaN(radiusNum)) return alert("❌ Invalid radius");
+      if (isNaN(radiusNum)) return alert("❌ Invalid radius");                                             // user may keep this empty
       gcode = generateGCodeForCircle(radiusNum, feedRateNum, stepSizeNum);
     }
 
@@ -38,8 +38,8 @@ export const HomePage = () => {
     }
 
     // Save job to Firestore
-    const jobData: any = {
-      shape,
+    const jobData: any = {                                                                                //creating a new object jobData that represents a G-code job
+      shape,          
       feedRate: feedRateNum,
       stepSize: stepSizeNum,
       gcode,
@@ -53,7 +53,7 @@ export const HomePage = () => {
     }
 
     try {
-      await addDoc(collection(db, "gcodes"), jobData);
+      await addDoc(collection(db, "gcodes"), jobData);                                                   //addDoc() to upload the jobData object to your Firestore
       alert("✅ G-code uploaded to Firestore. Now sending to ESP32...");
       await sendGcodeToESP(gcode);
       alert("✅ G-code sent to ESP32 via WebSocket.");
@@ -84,6 +84,7 @@ export const HomePage = () => {
             <button className="bg-green-300 hover:bg-green-400 text-black font-medium py-2 px-6 rounded-lg shadow">
               Upload Image
             </button>
+
             <button
                 onClick={() => setShowShapeForm(!showShapeForm)}
                 className="bg-green-300 hover:bg-green-400 text-black font-medium py-2 px-6 rounded-lg shadow"
