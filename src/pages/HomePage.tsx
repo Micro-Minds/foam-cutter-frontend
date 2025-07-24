@@ -1,5 +1,5 @@
 import { useState } from "react";
-import chessImage from "../assets/chess.jpg";
+import machineImage from "../assets/machine.jpg";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { sendGcodeToESP } from "../service/sendGCodeToEsp.ts";
@@ -74,7 +74,8 @@ export const HomePage = () => {
   return (
       <div className="flex flex-col min-h-screen bg-[#f0ede7] text-gray-800">
         <main className="flex-grow flex flex-col items-center justify-center px-2 py-6 text-center">
-          <img src={chessImage} alt="Design preview" className="w-48 h-48 mx-auto rounded-lg object-contain shadow-md mb-6" />
+          <img src={machineImage} alt="Design preview" className="w-full max-w-3xl h-auto mx-auto rounded-lg object-cover" />
+          <br /><br /><br />
           <h1 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">Your Design Portal</h1>
           <p className="max-w-2xl text-base sm:text-lg text-gray-700 mb-8">
             Welcome to your personal design space! Upload your creations or choose from our saved designs to bring your ideas to life.
