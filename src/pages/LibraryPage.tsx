@@ -1,5 +1,7 @@
-import design1 from "../assets/design1.jpg"; // replace with your real images
+import design1 from "../assets/design1.jpg"; 
 import design2 from "../assets/design2.jpg";
+import chess from "../assets/chess.jpg";
+import horseImage from "../assets/horse.jpg"; 
 
 export function LibraryPage() {
   const handleSend = (title: string) => {
@@ -27,23 +29,41 @@ export function LibraryPage() {
       time: "12 minutes",
       feedRate: "1000 mm/min",
     },
+    {
+      title: "Chess Pawn",
+      image: chess, 
+      description:
+        "A classic chess pawn silhouette, great for educational models or decorative pieces. Easy to cut with precise edges.",
+      size: "160mm × 100mm",
+      time: "6 minutes",
+      feedRate: "1100 mm/min",
+    },
+    {
+      title: "Horse Silhouette",
+      image: horseImage, 
+      description:
+        "A bold and dynamic silhouette of a horse. Perfect for decorative or artistic CNC cuts with detailed curves and edges.",
+      size: "220mm × 170mm",
+      time: "10 minutes",
+      feedRate: "1100 mm/min",
+    }
   ];
 
   return (
     <div className="bg-[#e5dfd5] min-h-screen p-8">
       <h1 className="text-3xl font-bold text-center mb-8">Design Library</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {designs.map((design, index) => (
           <div
-            key={index}
-            className="bg-white shadow-lg rounded-lg overflow-hidden p-6 max-w-sm mx-auto"
-          >
+          key={index}
+          className="bg-white shadow-md rounded-lg p-4 w-full transform transition duration-300 hover:shadow-xl hover:scale-[1.02]"
+        >
 
           <img
             src={design.image}
             alt={design.title}
-            className="w-full max-h-64 object-contain rounded"
+            className="w-full h-36 object-contain rounded bg-white"
           />
 
             <h2 className="text-xl font-semibold mt-4 mb-2">{design.title}</h2>
