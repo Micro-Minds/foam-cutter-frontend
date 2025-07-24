@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import image from "../assets/logo.png";
+import logo from "../assets/logo.jpg";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
@@ -18,8 +18,8 @@ export function SignIn() {
             {/* Image */}
             <div className="w-1/2 hidden md:flex items-center justify-center bg-blue-100">
                 <img
-                    src={image}
-                    alt="Business"
+                    src={logo}
+                    alt="MicroMinds_Logo"
                     className="w-4/5 rounded-xl shadow-lg"
                 />
             </div>

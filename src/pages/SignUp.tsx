@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import image from "../assets/logo.png"; // using the same image for consistency
+import logo from "../assets/logo.jpg"; // using the same image for consistency
 
 export function SignUp() {
     const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ export function SignUp() {
             {/* Image*/}
             <div className="w-1/2 hidden md:flex items-center justify-center bg-blue-100">
                 <img
-                    src={image}
+                    src={logo}
                     alt="Business"
                     className="w-4/5 rounded-xl shadow-lg"
                 />
