@@ -1,13 +1,32 @@
 import design1 from "../assets/design1.jpg"; 
 import design2 from "../assets/design2.jpg";
 import chess from "../assets/chess.jpg";
-import horseImage from "../assets/horse.jpg"; 
+import horseImage from "../assets/horse.jpg";
+import {remapGCode2DInCm} from "../generateGCodes/genarateLibraryImagesGcodes.ts";
+
+export const STAR_5: string = `G21
+G90
+(5-point star)
+G0 X0 Y38.042
+G1 X23.511 Y30.901
+G1 X30.901 Y7.389
+G1 X38.042 Y30.901
+G1 X61.553 Y38.042
+G1 X38.042 Y45.183
+G1 X30.901 Y68.695
+G1 X23.511 Y45.183
+G1 X0 Y38.042
+M30`;
 
 export function LibraryPage() {
   const handleSend = (title: string) => {
+    remapGCode2DInCm(STAR_5,1,200,8);
     alert(
       `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
     );
+
+
+
   };
 
   const designs = [

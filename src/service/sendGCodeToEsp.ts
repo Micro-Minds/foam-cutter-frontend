@@ -52,7 +52,6 @@ export async function sendGcodeToESP(gcode: string[]): Promise<void> {
 }
 */
 
-
 export async function sendGcodeToESP(gcode: string): Promise<void> {
     const espUrl = "ws://192.168.8.103:81";
 
