@@ -258,3 +258,67 @@ export function updateFeedRateAndStepSize(
     console.log(result);
     return result;
 }
+
+/**
+ * Uses ONE feedrate you pass in (ignores any F values in the G-code).
+ * Returns seconds & minutes of *cutting* time (G1 only).
+ */
+export function estimateCuttingTimeWithFixedFeed(
+    gcode: string,
+    feedRateMmMin: number
+): { seconds: number; minutes: number } {
+    const lines = gcode.split(/\r?\n/);
+
+    const xRe = /\bX(-?\d*\.?\d+)/i;
+    const yRe = /\bY(-?\d*\.?\d+)/i;
+
+    let lastX: number | null = null;
+    let lastY: number | null = null;
+
+    let cuttingSec = 0;
+
+    const getG = (s: string) => {
+        const m = s.match(/\bG(\d+)\b/i);
+        return m ? Number(m[1]) : undefined;
+    };
+
+    for (const raw of lines) {
+        const line = raw.split("(")[0].trim(); // strip comments
+        if (!line) continue;
+
+        const g = getG(line);
+        if (g !== 1) {
+            // still record coords if present
+            const xm = line.match(xRe);
+            const ym = line.match(yRe);
+            if (xm || ym) {
+                lastX = xm ? parseFloat(xm[1]) : lastX;
+                lastY = ym ? parseFloat(ym[1]) : lastY;
+            }
+            continue;
+        }
+
+        const xm = line.match(xRe);
+        const ym = line.match(yRe);
+        const x = xm ? parseFloat(xm[1]) : lastX;
+        const y = ym ? parseFloat(ym[1]) : lastY;
+
+        if (x == null || y == null) {
+            lastX = x ?? lastX;
+            lastY = y ?? lastY;
+            continue;
+        }
+
+        if (lastX != null && lastY != null && (x !== lastX || y !== lastY)) {
+            const dist = Math.hypot(x - lastX, y - lastY); // mm
+            const segTimeSec = (dist / feedRateMmMin) * 60; // feed mm/min
+            cuttingSec += segTimeSec;
+        }
+
+        lastX = x;
+        lastY = y;
+    }
+    console.log("sec: "+cuttingSec+ "min :"+cuttingSec/60)
+    return { seconds: cuttingSec, minutes: cuttingSec / 60 };
+}
+

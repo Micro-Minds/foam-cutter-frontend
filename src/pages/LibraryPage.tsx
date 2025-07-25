@@ -2,7 +2,11 @@ import design1 from "../assets/design1.jpg";
 import design2 from "../assets/design2.jpg";
 import chess from "../assets/chess.jpg";
 import horseImage from "../assets/horse.jpg";
-import {remapGCode2DInCm, updateFeedRateAndStepSize} from "../generateGCodes/genarateLibraryImagesGcodes.ts";
+import {
+  estimateCuttingTimeWithFixedFeed,
+  remapGCode2DInCm,
+  updateFeedRateAndStepSize
+} from "../generateGCodes/genarateLibraryImagesGcodes.ts";
 
 export const STAR_5: string = `G21
 G90
@@ -20,6 +24,9 @@ M30`;
 
 export function LibraryPage() {
   const handleSend = (title: string) => {
+
+    estimateCuttingTimeWithFixedFeed(STAR_5, 400);
+
     //remapGCode2DInCm(STAR_5,1,200,8);
     updateFeedRateAndStepSize(STAR_5,1,400);
     alert(
