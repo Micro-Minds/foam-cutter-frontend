@@ -4,9 +4,10 @@ import chess from "../assets/chess.jpg";
 import horseImage from "../assets/horse.jpg";
 import {
   estimateCuttingTimeWithFixedFeed,
-  remapGCode2DInCm,
   updateFeedRateAndStepSize
 } from "../generateGCodes/genarateLibraryImagesGcodes.ts";
+import {saveNewLibraryItem} from "../service/libraryService.ts";
+import {getNextLibraryId} from "../service/genarateIDs.ts";
 
 export const STAR_5: string = `G21
 G90
@@ -23,16 +24,17 @@ G1 X0 Y38.042
 M30`;
 
 export function LibraryPage() {
-  const handleSend = (title: string) => {
+  const handleSend = async (title: string) => {
 
     estimateCuttingTimeWithFixedFeed(STAR_5, 400);
-
+    const id = await getNextLibraryId();
+    const ref = saveNewLibraryItem(id, STAR_5, 200, 50, 1, 5);
+    console.log(ref);
     //remapGCode2DInCm(STAR_5,1,200,8);
-    updateFeedRateAndStepSize(STAR_5,1,400);
+    updateFeedRateAndStepSize(STAR_5, 1, 400);
     alert(
-      `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
+        `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
     );
-
 
 
   };
