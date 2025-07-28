@@ -74,7 +74,7 @@ export const HomePage = () => {
   return (
       <div className="flex flex-col min-h-screen bg-[#f0ede7] text-gray-800">
         <main className="flex-grow flex flex-col items-center justify-center px-2 py-6 text-center">
-          <img src={machineImage} alt="Design preview" className="w-full max-w-xl h-64 mx-auto rounded-lg object-contain shadow" />
+          <img src={machineImage} alt="Design preview" className="w-full max-w-xl h-64 mx-auto" />
           <br /><br /><br />
           <h1 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">Your Design Portal</h1>
           <p className="max-w-2xl text-base sm:text-lg text-gray-700 mb-8">
