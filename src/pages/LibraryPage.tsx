@@ -131,26 +131,25 @@ export function LibraryPage() {
             </p>
 
             <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
-  <button
-    onClick={() => handleSend(design.title)}
-    className="bg-green-600 text-white px-2 py-1 text-sm rounded hover:bg-green-700 transition"
-  >
-    Send to Print
-  </button>
-  <button
-    onClick={() => handleUpdate(design.title)}
-    className="bg-yellow-500 text-white px-2 py-1 text-sm rounded hover:bg-yellow-600 transition"
-  >
-    Update
-  </button>
-  <button
-    onClick={() => handleDelete(design.title)}
-    className="bg-red-600 text-white px-2 py-1 text-sm rounded hover:bg-red-700 transition"
-  >
-    Delete
-  </button>
-</div>
-
+              <button
+                onClick={() => handleSend(design.title)}
+                className="bg-green-600 text-white px-2 py-1 text-sm rounded hover:bg-green-700 transition"
+              >
+                Send to Print
+              </button>
+              <button
+                onClick={() => handleUpdate(design.title)}
+                className="bg-yellow-500 text-white px-2 py-1 text-sm rounded hover:bg-yellow-600 transition"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => handleDelete(design.title)}
+                className="bg-red-600 text-white px-2 py-1 text-sm rounded hover:bg-red-700 transition"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>
