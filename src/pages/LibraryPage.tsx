@@ -10,6 +10,21 @@ export function LibraryPage() {
     );
   };
 
+  const handleAdd = () => {
+    alert("➕ Add Design: You can now open a form/modal to add a new design.");
+  };
+
+  const handleUpdate = (title: string) => {
+    alert(`✏️ Update "${title}": Implement update form or modal here.`);
+  };
+
+  const handleDelete = (title: string) => {
+    const confirmDelete = confirm(`❌ Are you sure you want to delete "${title}"?`);
+    if (confirmDelete) {
+      alert(`Deleted "${title}" (you should now remove it from the list).`);
+    }
+  };
+
   const designs = [
     {
       title: "FIT 23",
@@ -51,20 +66,28 @@ export function LibraryPage() {
 
   return (
     <div className="bg-[#e5dfd5] min-h-screen p-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Design Library</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold text-center w-full">Design Library</h1>
+        <button
+          onClick={handleAdd}
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition ml-4 min-w-[160px] text-center"
+        >
+          + Add Design
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {designs.map((design, index) => (
           <div
-          key={index}
-          className="bg-white shadow-md rounded-lg p-4 w-full transform transition duration-300 hover:shadow-xl hover:scale-[1.02]"
-        >
+            key={index}
+            className="bg-white shadow-md rounded-lg p-4 w-full max-w-[320px] mx-auto sm:mx-0 transform transition duration-300 hover:shadow-xl hover:scale-[1.02]"
 
-          <img
-            src={design.image}
-            alt={design.title}
-            className="w-full h-36 object-contain rounded bg-white"
-          />
+          >
+            <img
+              src={design.image}
+              alt={design.title}
+              className="w-full h-36 object-contain rounded bg-white"
+            />
 
             <h2 className="text-xl font-semibold mt-4 mb-2">{design.title}</h2>
             <p className="text-gray-700 mb-2">{design.description}</p>
@@ -74,15 +97,31 @@ export function LibraryPage() {
             <p className="text-sm text-gray-600">
               <strong>Approx. Time:</strong> {design.time}
             </p>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-600">
               <strong>Feed Rate:</strong> {design.feedRate}
             </p>
-            <button
-              onClick={() => handleSend(design.title)}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-            >
-              Send to Print
-            </button>
+
+            <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
+  <button
+    onClick={() => handleSend(design.title)}
+    className="bg-green-600 text-white px-2 py-1 text-sm rounded hover:bg-green-700 transition"
+  >
+    Send to Print
+  </button>
+  <button
+    onClick={() => handleUpdate(design.title)}
+    className="bg-yellow-500 text-white px-2 py-1 text-sm rounded hover:bg-yellow-600 transition"
+  >
+    Update
+  </button>
+  <button
+    onClick={() => handleDelete(design.title)}
+    className="bg-red-600 text-white px-2 py-1 text-sm rounded hover:bg-red-700 transition"
+  >
+    Delete
+  </button>
+</div>
+
           </div>
         ))}
       </div>
