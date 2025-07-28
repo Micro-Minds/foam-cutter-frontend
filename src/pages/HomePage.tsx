@@ -74,12 +74,25 @@ export const HomePage = () => {
   return (
       <div className="flex flex-col min-h-screen bg-[#f0ede7] text-gray-800">
         <main className="flex-grow flex flex-col items-center justify-center px-2 py-6 text-center">
-          <img src={machineImage} alt="Design preview" className="w-full max-w-3xl h-auto mx-auto rounded-lg object-cover" />
+          <img src={machineImage} alt="Design preview" className="w-full max-w-xl h-64 mx-auto rounded-lg object-contain shadow" />
           <br /><br /><br />
           <h1 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">Your Design Portal</h1>
           <p className="max-w-2xl text-base sm:text-lg text-gray-700 mb-8">
             Welcome to your personal design space! Upload your creations or choose from our saved designs to bring your ideas to life.
           </p>
+          
+          <div className="text-left mt-6 max-w-3xl mx-auto">
+            <h2 className="text-2xl font-semibold mb-3 text-green-700">📌 Machine Usage Instructions</h2>
+            <ul className="list-disc list-inside text-gray-700 space-y-1 text-sm sm:text-base">
+              <li>Ensure the machine is powered on and connected to Wi-Fi.</li>
+              <li>Place and secure the rigifoam sheet on the platform.</li>
+              <li>Always check the feed rate and step size before sending the G-code.</li>
+              <li>Do not touch the wire while the machine is operating.</li>
+              <li>Click “Send G-Code” only when everything is set and safe.</li>
+              <li>Use the Review tab to double-check previous jobs.</li>
+            </ul>
+          </div>
+          <br /><br />
 
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <button className="bg-green-300 hover:bg-green-400 text-black font-medium py-2 px-6 rounded-lg shadow">
