@@ -8,7 +8,10 @@ export function saveNewLibraryItem(
     feedRate: number,
     size: number,
     stepSize: number,
-    time: number
+    time: number,
+    image:string,
+    title: string,
+    description: string,
 ) {
     const docRef = doc(db, "library", id);
     return setDoc(docRef, {
@@ -18,11 +21,13 @@ export function saveNewLibraryItem(
         size,
         stepSize,
         time,
+        image,
+        title,
+        description,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
     });
 }
-
 
 
 export async function updateLibraryItem(
@@ -31,7 +36,10 @@ export async function updateLibraryItem(
     feedRate: number,
     size: number,
     stepSize: number,
-    time: number
+    time: number,
+    image: string,
+    title: string,
+    description: string,
 ) {
     const docRef = doc(db, "library", id);
 
@@ -41,6 +49,9 @@ export async function updateLibraryItem(
         size,
         stepSize,
         time,
+        image,
+        title,
+        description,
         updatedAt: serverTimestamp(),
     });
 }

@@ -1,5 +1,5 @@
 
-export function remapGCode2DInCm(
+/*export function remapGCode2DInCm(
     existingGcode: string,
     stepSize: number,
     feedRate: number,
@@ -145,8 +145,7 @@ export function remapGCode2DInCm(
     const result = out.join("\n");
     console.log(result);
     return result;
-}
-
+}*/
 /**
  * Adjusts feedrate and step size (densification) of G-code
  * @param existingGcode Original G-code
