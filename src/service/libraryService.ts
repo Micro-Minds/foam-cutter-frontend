@@ -1,5 +1,6 @@
-import {addDoc,getDocs, updateDoc, collection, doc, serverTimestamp} from "firebase/firestore";
+import {setDoc,getDocs, updateDoc, collection, doc, serverTimestamp} from "firebase/firestore";
 import { db } from "../firebase";
+
 
 export function saveNewLibraryItem(
     id: string,
@@ -8,8 +9,9 @@ export function saveNewLibraryItem(
     size: number,
     stepSize: number,
     time: number
-){
-    const docRef =  addDoc(collection(db, "library"), {
+) {
+    const docRef = doc(db, "library", id);
+    return setDoc(docRef, {
         id,
         gcode,
         feedRate,
@@ -19,9 +21,8 @@ export function saveNewLibraryItem(
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
     });
-    return docRef;
-
 }
+
 
 
 export async function updateLibraryItem(

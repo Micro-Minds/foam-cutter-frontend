@@ -6,9 +6,14 @@ import {
   estimateCuttingTimeWithFixedFeed,
   updateFeedRateAndStepSize
 } from "../generateGCodes/genarateLibraryImagesGcodes.ts";
-import {getAllLibraryItems, saveNewLibraryItem} from "../service/libraryService.ts";
+import {
+  getAllLibraryItems,
+  saveNewLibraryItem,
+  saveNewLibraryItemWithCustomID,
+  updateLibraryItem
+} from "../service/libraryService.ts";
 import {getNextLibraryId} from "../service/genarateIDs.ts";
-import {sendGcodeToESP} from "../service/sendGCodeToEsp.ts";
+
 
 export const STAR_5: string = `G21
 G90
@@ -34,8 +39,11 @@ export function LibraryPage() {
     //remapGCode2DInCm(STAR_5,1,200,8);
     updateFeedRateAndStepSize(STAR_5, 1, 400);
 
-    getAllLibraryItems();
 
+    const items = await getAllLibraryItems();
+    const firstItem = items[0];
+    updateLibraryItem("C012",STAR_5,100,20,1,5.1)
+    console.log(firstItem);
     alert(
         `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
     );
