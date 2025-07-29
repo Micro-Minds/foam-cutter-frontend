@@ -22,7 +22,7 @@ export const HomePage = () => {
       return;
     }
 
-    let gcode: string[] = [];
+    let gcode: string = "";
 
     if (shape === "circle") {
       const radiusNum = Number(circleRadius);
@@ -38,7 +38,7 @@ export const HomePage = () => {
     }
 
     // Save job to Firestore
-    const jobData: any = {                                                                                //creating a new object jobData that represents a G-code job
+    const jobData :any = {                                                                                //creating a new object jobData that represents a G-code job
       shape,          
       feedRate: feedRateNum,
       stepSize: stepSizeNum,

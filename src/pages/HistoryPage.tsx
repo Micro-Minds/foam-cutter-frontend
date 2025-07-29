@@ -1,5 +1,4 @@
-import React from "react";
-import gearImage from "../assets/gear.png"; 
+import gearImage from "../assets/gear.png";
 
 export function HistoryPage() {
   return (

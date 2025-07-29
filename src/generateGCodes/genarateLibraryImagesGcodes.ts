@@ -108,7 +108,7 @@ export function remapGCode2DInCm(
 
         // Densify straight moves if requested
         if (stepSize > 0 && g === 1 && (xs !== undefined || ys !== undefined)) {
-            const current = {
+            const current:any = {
                 x: xs ?? (lastPoint?.x ?? 0),
                 y: ys ?? (lastPoint?.y ?? 0),
             };
@@ -221,7 +221,7 @@ export function updateFeedRateAndStepSize(
 
         // Add interpolation steps if needed
         if (stepSize > 0 && g === 1 && (x !== undefined || y !== undefined)) {
-            const current = {
+            const current :any= {
                 x: x ?? (lastPoint?.x ?? 0),
                 y: y ?? (lastPoint?.y ?? 0),
             };

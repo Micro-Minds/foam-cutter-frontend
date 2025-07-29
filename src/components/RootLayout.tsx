@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
 import {Navigation} from "./Naviagtions.tsx";
-import { Footer } from "./Footer";
+import { Footer } from "../components/footer.tsx";
 
 const RootLayout = () => {
     return (
