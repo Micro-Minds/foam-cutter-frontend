@@ -1,4 +1,4 @@
-import {setDoc,getDocs, updateDoc, collection, doc, serverTimestamp} from "firebase/firestore";
+import {setDoc,getDocs, updateDoc, deleteDoc,collection, doc, serverTimestamp} from "firebase/firestore";
 import { db } from "../firebase";
 
 
@@ -69,6 +69,17 @@ export async function getAllLibraryItems() {
 
     return items;
 }
+
+export async function deleteLibraryItem(itemId: string) {
+    try {
+        const docRef = doc(db, "library", itemId);
+        await deleteDoc(docRef);
+        console.log(`Document with ID ${itemId} deleted.`);
+    } catch (error) {
+        console.error("Error deleting document:", error);
+    }
+}
+
 
 
 

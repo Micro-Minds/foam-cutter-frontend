@@ -4,6 +4,7 @@ import chess from "../assets/chess.jpg";
 import horseImage from "../assets/horse.jpg";
 
 import {
+  deleteLibraryItem,
   getAllLibraryItems,
   saveNewLibraryItem,
 } from "../service/libraryService.ts";
@@ -11,6 +12,7 @@ import {
 import {getNextLibraryId} from "../service/genarateIDs.ts";
 import {useState} from "react";
 import {toBase64} from "../service/covertImageToBase64.ts";
+
 
 
 
@@ -304,11 +306,7 @@ export function LibraryPage() {
 
   const handleSend = async (title: string) => {
 
-   // test the id generation to new items
-    const id = await getNextLibraryId();
-// test the saving of items in firestore
-    const ref = saveNewLibraryItem(id, horse, 200, 50, 1, 5,base64Image,"Liberty","ABCD");
-   // console.log(ref);
+
 
     //updateFeedRateAndStepSize(STAR_5, 1, 400);
 
@@ -318,8 +316,7 @@ export function LibraryPage() {
     console.log(firstItem.gcode);
     // test if the image is perfectly view when we get it from firestore
     setBase64Image(firstItem.image);
-    // test update item function
-    //updateLibraryItem("C012",STAR_5,100,20,1,5.1)
+
 
     alert(
         `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
@@ -328,18 +325,28 @@ export function LibraryPage() {
 
   };
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     alert("➕ Add Design: You can now open a form/modal to add a new design.");
+    // test the id generation to new items
+    const id = await getNextLibraryId();
+// test the saving of items in firestore
+    const ref = saveNewLibraryItem(id, horse, 200, 50, 1, 5, base64Image, "Liberty", "ABCD")
+    // console.log(ref);;
   };
 
   const handleUpdate = (title: string) => {
     alert(`✏️ Update "${title}": Implement update form or modal here.`);
+    // test update item function
+    //updateLibraryItem("C012",STAR_5,100,20,1,5.1)
   };
 
   const handleDelete = (title: string) => {
     const confirmDelete = confirm(`❌ Are you sure you want to delete "${title}"?`);
     if (confirmDelete) {
       alert(`Deleted "${title}" (you should now remove it from the list).`);
+      // delete
+      const deleted=deleteLibraryItem("C013");
+      console.log(deleted);
     }
   };
 
