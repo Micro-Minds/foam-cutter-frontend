@@ -11,13 +11,13 @@ export const HomePage = () => {
   const [circleRadius, setCircleRadius] = useState("");
   const [rectangleLength, setRectangleLength] = useState("");
   const [rectangleBreadth, setRectangleBreadth] = useState("");
-  const [feedRate, setFeedRate] = useState("200");
+  const [feedRate, setFeedRate] = useState("60");
   const [stepSize, setStepSize] = useState("1");
 
   const handleSubmit = async () => {
     const feedRateNum = Number(feedRate);
     const stepSizeNum = Number(stepSize);
-    if (isNaN(feedRateNum) || isNaN(stepSizeNum)) {
+    if (isNaN(feedRateNum) || isNaN(stepSizeNum)) { 
       alert("❌ Invalid feed rate or step size");
       return;
     }
