@@ -28,6 +28,7 @@ export const HomePage = () => {
       const radiusNum = Number(circleRadius);
       if (isNaN(radiusNum)) return alert("❌ Invalid radius");                                             // user may keep this empty
       gcode = generateGCodeForCircle(radiusNum, feedRateNum, stepSizeNum);
+      sendGcodeToESP(gcode);
     }
 
     if (shape === "rectangle") {
@@ -35,6 +36,7 @@ export const HomePage = () => {
       const b = Number(rectangleBreadth);
       if (isNaN(l) || isNaN(b)) return alert("❌ Invalid length or breadth");
       gcode = generateRectangleGCode(l, b, feedRateNum);
+      sendGcodeToESP(gcode);
     }
 
     // Save job to Firestore
@@ -56,7 +58,7 @@ export const HomePage = () => {
       await addDoc(collection(db, "gcodes"), jobData);                                                   //addDoc() to upload the jobData object to your Firestore
       alert("✅ G-code uploaded to Firestore. Now sending to ESP32...");
       await sendGcodeToESP(gcode);
-      alert("✅ G-code sent to ESP32 via WebSocket.");
+
     } catch (err) {
       console.error("Error submitting or sending:", err);
       alert("❌ Failed to send G-code to ESP32.");
