@@ -22,5 +22,5 @@ export default RootLayout;
 /*every page inside /app/* will have
  the same navbar and footer
  and only the middle content (<Outlet />) changes 🔁
-Dont need to add them in every page.
+Dont need to add them separately in every page.
 */

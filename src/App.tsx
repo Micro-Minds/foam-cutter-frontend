@@ -44,4 +44,4 @@ function App() {
 
 export default App
 
-// path means parent URLin childern we re setting the child URL
+// path means parent URL in childern we re setting the child URL

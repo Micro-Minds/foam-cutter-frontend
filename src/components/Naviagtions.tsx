@@ -40,7 +40,7 @@ export function Navigation() {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="sm:hidden bg-blue-800 text-white mt-16 fixed top-0 left-0 w-full z-30 shadow-lg pt-16">
+                <div className="sm:hidden bg-[#344E41] text-white fixed top-0 left-0 w-full z-30 shadow-lg pt-16">
                     <ul className="space-y-2 px-6 py-4 text-lg">
                         <li><Link to="/app/home" className="block hover:text-sky-300">Home</Link></li>
                         <li><Link to="/app/review" className="block hover:text-sky-300">Review</Link></li>
