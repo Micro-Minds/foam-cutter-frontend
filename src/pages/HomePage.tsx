@@ -24,19 +24,18 @@ export const HomePage = () => {
 
     let gcode: string = "";
 
-    if (shape === "circle") {
+   if (shape === "circle") {
       const radiusNum = Number(circleRadius);
       if (isNaN(radiusNum)) return alert("❌ Invalid radius");                                             // user may keep this empty
       gcode = generateGCodeForCircle(radiusNum, feedRateNum, stepSizeNum);
-      sendGcodeToESP(gcode);
+      //sendGcodeToESP(gcode);
     }
-
     if (shape === "rectangle") {
       const l = Number(rectangleLength);
       const b = Number(rectangleBreadth);
       if (isNaN(l) || isNaN(b)) return alert("❌ Invalid length or breadth");
       gcode = generateRectangleGCode(l, b, feedRateNum);
-      sendGcodeToESP(gcode);
+      //sendGcodeToESP(gcode);
     }
 
     // Save job to Firestore
@@ -55,10 +54,10 @@ export const HomePage = () => {
     }
 
     try {
-      await addDoc(collection(db, "gcodes"), jobData);                                                   //addDoc() to upload the jobData object to your Firestore
-      alert("✅ G-code uploaded to Firestore. Now sending to ESP32...");
+      await addDoc(collection(db, "gcodes"), jobData);     // sends 1 single object to Firebase                                               //addDoc() to upload the jobData object to your Firestore
+      alert("✅G-code uploaded to Firestore. Now sending to ESP32...");
       await sendGcodeToESP(gcode);
-
+      alert("✅ G-code successfully sent to ESP32.");
     } catch (err) {
       console.error("Error submitting or sending:", err);
       alert("❌ Failed to send G-code to ESP32.");
@@ -68,7 +67,7 @@ export const HomePage = () => {
     setCircleRadius("");
     setRectangleLength("");
     setRectangleBreadth("");
-    setFeedRate("200");
+    setFeedRate("60");
     setStepSize("1");
     setShowShapeForm(false);
   };
@@ -132,7 +131,19 @@ export const HomePage = () => {
                           onChange={(e) => setCircleRadius(e.target.value)}
                           className="w-full border rounded px-3 py-2"
                       />
+
+                      <div>
+                        <label className="block font-semibold mb-1">Step Size (degrees):</label>
+                        <input
+                          type="number"
+                          value={stepSize}
+                          onChange={(e) => setStepSize(e.target.value)}
+                          className="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+
                     </div>
+                    
                 )}
 
                 {shape === "rectangle" && (
@@ -167,17 +178,6 @@ export const HomePage = () => {
                       className="w-full border rounded px-3 py-2"
                   />
                 </div>
-
-                <div>
-                  <label className="block font-semibold mb-1">Step Size (°):</label>
-                  <input
-                      type="number"
-                      value={stepSize}
-                      onChange={(e) => setStepSize(e.target.value)}
-                      className="w-full border rounded px-3 py-2"
-                  />
-                </div>
-
                 <button
                     onClick={handleSubmit}
                     className="w-full mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"

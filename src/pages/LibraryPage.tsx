@@ -14,9 +14,6 @@ import {useState} from "react";
 import {toBase64} from "../service/covertImageToBase64.ts";
 import {sendGcodeToESP} from "../service/sendGCodeToEsp.ts";
 
-
-
-
 export const STAR_5: string = `G21
 G90
 (5-point star)
@@ -628,7 +625,6 @@ G92 X0 Y0 Z0 ; Set current position as 0`;
 export function LibraryPage() {
 
   const [base64Image, setBase64Image] = useState("");
-
   function handleStop() {
     sendGcodeToESP(`M0`);
   }

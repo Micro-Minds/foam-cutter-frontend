@@ -363,8 +363,8 @@ export async function sendGcodeToESP(gcode: string): Promise<void> {
 }*/
 
 export async function sendGcodeToESP(gcode: string): Promise<void> {
-    const espUrl = "ws://192.168.8.103:81";// esp address
-    const lines = gcode.split("\n").map(line => line.trim()).filter(line => line !== "");
+    const espUrl = "ws://192.168.27.100:81";// esp IP address
+    const lines = gcode.split("\n").map(line => line.trim()).filter(line => line !== ""); // gcode breaks into lines
 
     return new Promise<void>((resolve, reject) => {
         const socket = new WebSocket(espUrl);
@@ -379,25 +379,7 @@ export async function sendGcodeToESP(gcode: string): Promise<void> {
             sendNextCommand(); // Start sending setup commands
         };
 
-        socket.onmessage = (event) => {
-            const response = event.data.trim();
-            console.log("📥 Received:", response);
-
-            // Continue only if "ok" received
-            if (response.toLowerCase().includes("ok")) {
-                awaitingOk = false;
-                console.log("response from esp32:", response);
-                sendNextCommand();
-            } else if (response.toLowerCase().includes("error")) {
-                console.error("❌ Error from GRBL:", response);
-                socket.close();
-                reject(new Error(response));
-            } else {
-                console.log("ℹ️ Message from GRBL (ignored):", response);
-            }
-        };
-
-        function sendNextCommand() {// pass line by lim\ne to esp via socket
+        function sendNextCommand() {          //sends only one line at a time, and then waits for "ok" from GRBL before moving to the next
             if (awaitingOk) return;
 
             currentIndex++;// ilg index ekt ynn mek krnne
