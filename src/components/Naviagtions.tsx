@@ -28,14 +28,17 @@ export function Navigation() {
                 </div>
 
                 {/* Desktop Menu */}
-                <nav className="hidden sm:flex space-x-8 text-lg">
-                    <Link to="/app/home" className="hover:text-sky-300 transition-colors">Home</Link>
-                    <Link to="/app/library" className="hover:text-sky-300 transition-colors">Library</Link>
-                    <Link to="/app/history" className="hover:text-sky-300 transition-colors">History</Link>
-                    <Link to="/app/about" className="hover:text-sky-300 transition-colors">About</Link>
-                    <Link to="/app/review" className="hover:text-sky-300 transition-colors">Review</Link>
-                    <Link to="/app/account" className="hover:text-sky-300 transition-colors">My Account</Link>
-                </nav>
+                <div className="hidden sm:flex items-center space-x-6">
+
+                    <Link to="/app/home" className="hover:text-sky-300">Home</Link>
+                    <Link to="/app/review" className="hover:text-sky-300">Review</Link>
+                    <Link to="/app/library" className="hover:text-sky-300">Library</Link>
+                    <Link to="/app/history" className="hover:text-sky-300">History</Link>
+                    <Link to="/app/about" className="hover:text-sky-300">About</Link>
+                    <Link to="/app/account" className="hover:text-sky-300">My Account</Link>
+                    <button onClick={handleLogout} className="hover:text-sky-300">Logout</button>
+                </div>
+
             </header>
 
             {/* Mobile Menu */}
@@ -46,6 +49,7 @@ export function Navigation() {
                         <li><Link to="/app/review" className="block hover:text-sky-300">Review</Link></li>
                         <li><Link to="/app/library" className="block hover:text-sky-300">Library</Link></li>
                         <li><Link to="/app/history" className="block hover:text-sky-300">History</Link></li>
+                        <li><Link to="/app/about" className="block hover:text-sky-300">About</Link></li>
                         <li><Link to="/app/account" className="block hover:text-sky-300">My Account</Link></li>
                         <li><button onClick={handleLogout} className="block text-left w-full hover:text-sky-300">Logout</button></li>
                     </ul>
@@ -56,4 +60,5 @@ export function Navigation() {
             <div className="h-16 sm:h-20"></div>
         </>
     );
-}
+};
+
