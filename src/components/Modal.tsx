@@ -16,6 +16,7 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
 
         try {
             const base64 = await toBase64(file);
+            console.log(base64)
             setFormData({
                 ...formData,
                 image: base64
@@ -74,9 +75,9 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-green-700">Time</label>
+                                    <label className="block text-sm font-medium text-green-700">Time (Minutes)</label>
                                     <input
-                                        type="time"
+                                        type="number"
                                         name="time"
                                         value={formData.time}
                                         onChange={handleChange}
@@ -96,6 +97,19 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                         required
                                     />
                                 </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-green-700">StepSize</label>
+                                    <input
+                                        type="number"
+                                        name="stepSize"
+                                        value={formData.stepSize}
+                                        onChange={handleChange}
+                                        className="mt-1 w-full border border-green-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        required
+                                    />
+                                </div>
+
                             </div>
 
                             {/* Description */}
