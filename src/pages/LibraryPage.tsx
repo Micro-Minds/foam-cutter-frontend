@@ -666,17 +666,9 @@ export function LibraryPage() {
     const handleSend = async (title: string) => {
 
         //updateFeedRateAndStepSize(STAR_5, 1, 400);
-// test the get all ibrary items from firestore
-        /*  const items = await getAllLibraryItems();
-          const firstItem = items[3];
-          console.log(firstItem.gcode);
-          // test if the image is perfectly view when we get it from firestore
-          setBase64Image(firstItem.image);*/
-
         alert(
             `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
         );
-
         await sendGcodeToESP(horse);
 
     };
