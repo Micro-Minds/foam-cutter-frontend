@@ -10,7 +10,7 @@ import {
 } from "../service/libraryService.ts";
 
 import {getNextLibraryId} from "../service/genarateIDs.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {sendGcodeToESP} from "../service/sendGCodeToEsp.ts";
 import {Modal} from "../components/Modal.tsx";
 
@@ -636,6 +636,16 @@ export function LibraryPage() {
         stepSize:1,
         time: 1
     });
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const result:any = await getAllLibraryItems();
+            setItems(result);
+            console.log(result);
+        }
+        fetchData();
+    }, []);
 
     const handleSubmit = async () => {
         console.log("Submitted:", formData);
