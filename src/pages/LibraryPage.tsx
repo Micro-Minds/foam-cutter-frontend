@@ -147,6 +147,78 @@ export function LibraryPage() {
             size: "220mm × 170mm",
             time: "10 minutes",
             feedRate: "1100 mm/min",
+        },
+        {
+            title: "FIT 23",
+            image: design1,
+            description:
+                "The official logo of the Faculty of Information Technology, Batch 23. A perfect commemorative design for events or souvenirs.",
+            size: "200mm × 150mm",
+            time: "8 minutes",
+            feedRate: "1200 mm/min",
+        },
+        {
+            title: "Ballet Girl",
+            image: design2,
+            description:
+                "An elegant silhouette of a ballet dancer. Ideal for wall art or creative décor, cut smoothly with the hot wire CNC.",
+            size: "180mm × 180mm",
+            time: "12 minutes",
+            feedRate: "1000 mm/min",
+        },
+        {
+            title: "Chess Pawn",
+            image: chess,
+            description:
+                "A classic chess pawn silhouette, great for educational models or decorative pieces. Easy to cut with precise edges.",
+            size: "160mm × 100mm",
+            time: "6 minutes",
+            feedRate: "1100 mm/min",
+        },
+        {
+            title: "Horse Silhouette",
+            image: horseImage,
+            description:
+                "A bold and dynamic silhouette of a horse. Perfect for decorative or artistic CNC cuts with detailed curves and edges.",
+            size: "220mm × 170mm",
+            time: "10 minutes",
+            feedRate: "1100 mm/min",
+        },
+        {
+            title: "FIT 23",
+            image: design1,
+            description:
+                "The official logo of the Faculty of Information Technology, Batch 23. A perfect commemorative design for events or souvenirs.",
+            size: "200mm × 150mm",
+            time: "8 minutes",
+            feedRate: "1200 mm/min",
+        },
+        {
+            title: "Ballet Girl",
+            image: design2,
+            description:
+                "An elegant silhouette of a ballet dancer. Ideal for wall art or creative décor, cut smoothly with the hot wire CNC.",
+            size: "180mm × 180mm",
+            time: "12 minutes",
+            feedRate: "1000 mm/min",
+        },
+        {
+            title: "Chess Pawn",
+            image: chess,
+            description:
+                "A classic chess pawn silhouette, great for educational models or decorative pieces. Easy to cut with precise edges.",
+            size: "160mm × 100mm",
+            time: "6 minutes",
+            feedRate: "1100 mm/min",
+        },
+        {
+            title: "Horse Silhouette",
+            image: horseImage,
+            description:
+                "A bold and dynamic silhouette of a horse. Perfect for decorative or artistic CNC cuts with detailed curves and edges.",
+            size: "220mm × 170mm",
+            time: "10 minutes",
+            feedRate: "1100 mm/min",
         }
     ];
 
@@ -160,31 +232,23 @@ export function LibraryPage() {
             <div className="flex justify-between items-center mb-8">
                 <button
                     onClick={handleStop}
-                    className="bg-green-400 text-black px-6 py-2 rounded hover:bg-blue-700 transition ml-4 min-w-[160px] text-center"
+                    className="bg-green-400 text-black px-6 py-2 rounded hover:bg-green-600 transition ml-4 min-w-[160px] text-center"
                 >
                     Emergency Stop 🛑
                 </button>
 
                 <button
                     onClick={handleRestart}
-                    className="bg-green-400 text-black px-6 py-2 rounded hover:bg-blue-700 transition ml-4 min-w-[160px] text-center"
+                    className="bg-green-400 text-black px-6 py-2 rounded hover:bg-green-600 transition ml-4 min-w-[160px] text-center"
                 >
                     Restart
                 </button>
 
             </div>
 
-
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-bold text-center w-full">Design Library</h1>
-                <button
-                    onClick={handleAdd}
-                    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition ml-4 min-w-[160px] text-center"
-                >
-                    + Add Design
-                </button>
             </div>
-
 
             <Modal
                 isOpen={isModalOpen}
@@ -194,7 +258,7 @@ export function LibraryPage() {
                 setFormData={setFormData}
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
                 {designs.map((design, index) => (
                     <div
                         key={index}
@@ -242,6 +306,16 @@ export function LibraryPage() {
                     </div>
                 ))}
             </div>
+
+            <div className="flex justify-center mt-6">
+            <button
+                onClick={handleAdd}
+                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition min-w-[160px] text-center"
+            >
+                + Add Design
+            </button>
+            </div>
+
         </div>
     );
 }

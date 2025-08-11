@@ -7,7 +7,7 @@ export const Footer = () => {
             <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm sm:text-base">
                 {/* Left column */}
                 <div className="text-center sm:text-left">
-                    <h3 className="font-semibold text-lg mb-2">Microminds</h3>
+                    <h3 className="font-semibold text-lg mb-2">Edge Maker</h3>
                     <ul className="space-y-1">
                         <li><Link to="/app/home" className="hover:text-green-300">Home</Link></li>
                         <li><Link to="/app/library" className="hover:text-green-300">Library</Link></li>
