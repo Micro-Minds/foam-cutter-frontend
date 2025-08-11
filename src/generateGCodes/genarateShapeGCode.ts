@@ -1,3 +1,4 @@
+//circle
 export function generateGCodeForCircle(
     radius: number,
     feedRate: number,
@@ -31,7 +32,6 @@ export function generateGCodeForCircle(
 
 
 //rectangle
-
 export function generateRectangleGCode(
     width: number,
     height: number,

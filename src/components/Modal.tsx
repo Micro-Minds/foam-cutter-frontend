@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { toBase64 } from "../service/covertImageToBase64.ts";
+import { toBase64 } from "../service/convertImageToBase64.ts";
 
 export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
     const handleChange = (e) => {
@@ -99,7 +99,7 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-green-700">StepSize</label>
+                                    <label className="block text-sm font-medium text-green-700">Size</label>
                                     <input
                                         type="number"
                                         name="stepSize"

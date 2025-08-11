@@ -26,7 +26,7 @@ export const HomePage = () => {
 
    if (shape === "circle") {
       const radiusNum = Number(circleRadius);
-      if (isNaN(radiusNum)) return alert("❌ Invalid radius");                                             // user may keep this empty
+      if (isNaN(radiusNum)) return alert("❌ Invalid radius");                                                              // user may keep this empty
       gcode = generateGCodeForCircle(radiusNum, feedRateNum, stepSizeNum);
       //sendGcodeToESP(gcode);
     }
@@ -39,7 +39,7 @@ export const HomePage = () => {
     }
 
     // Save job to Firestore
-    const jobData :any = {                                                                                //creating a new object jobData that represents a G-code job
+    const jobData :any = {                                                                                                   //creating a new object jobData that represents a G-code job
       shape,          
       feedRate: feedRateNum,
       stepSize: stepSizeNum,
@@ -54,7 +54,7 @@ export const HomePage = () => {
     }
 
     try {
-      await addDoc(collection(db, "gcodes"), jobData);     // sends 1 single object to Firebase                                               //addDoc() to upload the jobData object to your Firestore
+      await addDoc(collection(db, "gcodes"), jobData);                // sends 1 single object to Firebase                 //addDoc() to upload the jobData object to your Firestore
       alert("✅G-code uploaded to Firestore. Now sending to ESP32...");
       await sendGcodeToESP(gcode);
       alert("✅ G-code successfully sent to ESP32.");
@@ -75,9 +75,9 @@ export const HomePage = () => {
   return (
       <div className="flex flex-col min-h-screen bg-[#f0ede7] text-gray-800">
         <main className="flex-grow flex flex-col items-center justify-center px-2 py-6 text-center">
-          <img src={machineImage} alt="Design preview" className="w-full max-w-xl h-100 mx-auto" />
-          <br /><br /><br />
-          <h1 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">Your Design Portal</h1>
+          <img src={machineImage} alt="Design preview" className="w-full max-w-xl h-100 mx-auto mb-2" />
+          <br />
+          <h1 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4 mt-1">Your Design Portal</h1>
           <p className="max-w-2xl text-base sm:text-lg text-gray-700 mb-8">
             Welcome to your personal design space! Upload your creations or choose from our saved designs to bring your ideas to life.
           </p>
@@ -96,10 +96,6 @@ export const HomePage = () => {
           <br /><br />
 
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <button className="bg-green-300 hover:bg-green-400 text-black font-medium py-2 px-6 rounded-lg shadow">
-              Upload Image
-            </button>
-
             <button
                 onClick={() => setShowShapeForm(!showShapeForm)}
                 className="bg-green-300 hover:bg-green-400 text-black font-medium py-2 px-6 rounded-lg shadow"
