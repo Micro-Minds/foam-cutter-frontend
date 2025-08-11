@@ -1,6 +1,6 @@
 import precisionIcon from "../assets/precisionIcon.png";
 import uiIcon from "../assets/uiIcon.png";
-import historyIcon from "../assets/historyIcon.png";
+import versatileIcon from "../assets/versatility.png";
 import member1 from "../assets/Mask group (1).png";
 import member2 from "../assets/Mask group (2).png";
 import member3 from "../assets/Mask group (3).png";
@@ -20,8 +20,8 @@ export function AboutPage() {
         {/* Card 1 */}
         <div className="bg-[#A3B18A] rounded-xl p-6 w-full max-w-xs shadow-md">
           <img src={precisionIcon} alt="Precision" className="w-16 h-16 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">Precision of Printing</h3>
-          <p className="text-gray-700">Achieve perfect designs every time</p>
+          <h3 className="text-lg font-semibold mb-2">High Cutting Precision</h3>
+          <p className="text-gray-700">Delivering accurate cuts for complex shapes and designs</p>
         </div>
 
         {/* Card 2 */}
@@ -29,34 +29,34 @@ export function AboutPage() {
           <img src={uiIcon} alt="User Interface" className="w-16 h-16 mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">User-Friendly Interface</h3>
           <p className="text-gray-700">
-            Upload and manage your designs effortlessly
+            Easily upload your design and start cutting with minimal setup
           </p>
         </div>
 
         {/* Card 3 */}
         <div className="bg-[#A3B18A] rounded-xl p-6 w-full max-w-xs shadow-md">
-          <img src={historyIcon} alt="Design History" className="w-16 h-16 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">Secure Design History</h3>
+          <img src={versatileIcon} alt="Design History" className="w-16 h-16 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold mb-2">Versatile Applications</h3>
           <p className="text-gray-700">
-            Keep track of all your past creations
+            Suitable for packaging, prototyping, architecture models, and more
           </p>
         </div>
       </div>
 
       {/* New Project Description */}
-      <div className="max-w-4xl mx-auto mt-16 px-4 md:px-0 text-left">
+      <div className="max-w-4xl mx-auto mt-16 px-4 md:px-0 text-center">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">About Our CNC Foam Cutting Machine Project</h2>
-        <p className="text-gray-700 mb-8 leading-relaxed">
+        <p className="text-gray-700 mb-8 leading-relaxed text-center">
           Our CNC foam cutting machine project was developed to deliver a precise, efficient, and easy-to-use solution for cutting foam materials used in 
           industries such as packaging, prototyping, architecture, and model making. We recognized the need for an affordable, customizable cutting tool
-           that could help improve workflow and reduce material waste. This project showcases our dedication and technical skills as IT students at the 
-           University of Moratuwa, aiming to address real-world industrial challenges by making advanced cutting technology more accessible. 
-           We extend our sincere thanks to the Dean of the IT Faculty for their invaluable support and encouragement throughout this project
+          that could help improve workflow and reduce material waste. This project showcases our dedication and technical skills as IT students at the 
+          University of Moratuwa, aiming to address real-world industrial challenges by making advanced cutting technology more accessible. 
+          We extend our sincere thanks to the Dean of the IT Faculty for their invaluable support and encouragement throughout this project
         </p>
       </div>
 
       {/* Team Section */}
-      <div className="max-w-4xl mx-auto mt-16 ">
+      <div className="max-w-4xl mx-auto mt-16 pb-16 bg-[#e5dfd5]">
         <h2 className="text-3xl font-bold mb-10 text-gray-800">Meet Our Team - MicroMinds</h2>
         <p className="text-gray-700 mb-8 px-4 md:px-0">
           We are MicroMinds, a team of passionate 1st-year IT students from the University of Moratuwa.
