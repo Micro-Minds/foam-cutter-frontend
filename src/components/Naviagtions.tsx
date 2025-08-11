@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineBars, AiOutlineClose } from "react-icons/ai";
+import logo from "../assets/logo.jpg"; 
 
 export function Navigation() {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);                          
@@ -26,7 +27,12 @@ export function Navigation() {
                     >
                         {isMobileMenuOpen ? <AiOutlineClose size={24} className="text-emerald-600" /> : <AiOutlineBars size={24} className="text-emerald-600" />}  {/*if isMobileMenuOpen is true then show close icon else show hamburger icon*/} 
                     </button>                                                                          
-                    <h1 className="ml-4 text-xl sm:text-2xl font-bold tracking-wide text-emerald-800 bg-gradient-to-r from-emerald-700 to-emerald-500 bg-clip-text text-transparent">
+                    <img 
+                        src={logo}
+                        alt="Edge Maker Logo" 
+                        className="w-8 h-8 sm:w-10 sm:h-10 ml-4 rounded-lg object-cover"
+                    />
+                    <h1 className="ml-2 text-xl sm:text-2xl font-bold tracking-wide text-emerald-800 bg-gradient-to-r from-emerald-700 to-emerald-500 bg-clip-text text-transparent">
                         Edge Maker V1
                     </h1>
                 </div>

@@ -283,12 +283,12 @@ export function LibraryPage() {
                             <strong>Feed Rate:</strong> {design.feedRate}
                         </p>
 
-                        <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
+                        <div className="flex flex-wrap gap-2 mt-4 justify-center">
                             <button
                                 onClick={() => handleSend(design.title)}
                                 className="bg-green-600 text-white px-2 py-1 text-sm rounded hover:bg-green-700 transition"
                             >
-                                Send to Print
+                                Send
                             </button>
                             {/* <button
                                 onClick={() => handleUpdate(design.title)}
