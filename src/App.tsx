@@ -13,7 +13,7 @@ import {SignUp} from "./pages/SignUp.tsx";
 function App() {
     const routes = createBrowserRouter([
         {
-            path: "/",                                                                         // when user vists / or base URL
+            path: "/",                                                                        // when user vists / (logout) or base URL
             element: <LoginLayout/>,            
             children: [
                 {index: true, element: <Navigate to="signin" replace/>},                      // when user vists / or base URL redirect to /signin
@@ -27,7 +27,7 @@ function App() {
             children: [
                 //{index: true, element: <Navigate to="home" replace/>},                      //if URL is /app, render HomePage
                 { path: "home", element: <HomePage /> },  
-                { path: "library", element: <LibraryPage /> },                                    //if URL is /app/home(when user clicks on Home in navbar), render HomePage (including navbar and footer)
+                { path: "library", element: <LibraryPage /> },                                //if URL is /app/home(when user clicks on Home in navbar), render HomePage (including navbar and footer)
                 { path: "history", element: <HistoryPage /> },  
                 { path: "about", element: <AboutPage /> },    
                 { path: "review", element: <ReviewPage /> },
