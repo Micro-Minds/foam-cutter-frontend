@@ -7,7 +7,8 @@ import {HomePage } from "./pages/HomePage";
 import {LibraryPage } from './pages/LibraryPage.tsx';
 import {HistoryPage} from "./pages/HistoryPage.tsx";
 import {AboutPage} from "./pages/AboutPage.tsx";
-import {ReviewPage} from "./pages/ReviewPage.tsx";
+// import {ReviewPage} from "./pages/ReviewPage.tsx";
+import {ReviewsPage} from "./pages/ReviewsPage.tsx"; 
 import {SignUp} from "./pages/SignUp.tsx";
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
                 { path: "library", element: <LibraryPage /> },                                //if URL is /app/home(when user clicks on Home in navbar), render HomePage (including navbar and footer)
                 { path: "history", element: <HistoryPage /> },  
                 { path: "about", element: <AboutPage /> },    
-                { path: "review", element: <ReviewPage /> },
+                { path: "review", element: <ReviewsPage /> },
             ],
         },
     ]);
