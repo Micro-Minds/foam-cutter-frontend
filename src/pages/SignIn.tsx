@@ -9,8 +9,16 @@ export function SignIn() {
 
     const handleSignIn = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Signing in", { email, password });
-        navigate("/app/home");
+
+        const hardcodedEmail = "microminds@gmail.com";
+        const hardcodedPassword = "12345";
+
+        if (email === hardcodedEmail && password === hardcodedPassword) {
+            console.log("Login successful");
+            navigate("/app/home");
+        } else {
+            alert("Invalid email or password");
+        }
     };
 
     return (
