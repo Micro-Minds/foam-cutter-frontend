@@ -413,90 +413,8 @@ export async function sendGcodeToESP(gcode: string): Promise<void> {
 */
 
 
-// export async function sendGcodeToESP(gcode: string): Promise<void> {
-//     const espUrl = "ws://192.168.8.103:81"; // ESP32 WebSocket address
-//     const lines = gcode
-//         .split("\n")
-//         .map(line => line.trim())
-//         .filter(line => line !== "");
-
-//     return new Promise<void>((resolve, reject) => {
-//         const socket = new WebSocket(espUrl);
-
-//         // Setup commands to configure GRBL on ESP32 before sending user G-code
-//         const commandQueue = [
-//             "$X", // Unlock GRBL (clear alarm)
-//             "$20=0",
-//             "$21=0",
-//             ...lines         // Append actual G-code lines from input
-//         ];
-
-//         let currentIndex = -1;
-//         let awaitingOk = false;
-
-//         socket.onopen = () => {
-//             console.log("✅ WebSocket connected to ESP32");
-//             sendNextCommand();
-//         };
-
-//         socket.onmessage = (event) => {
-//             const response = event.data.trim();
-//             console.log("📥 Received:", response);
-
-//             // GRBL returns "ok" when command is accepted
-//             if (response.toLowerCase().includes("ok")) {
-//                 awaitingOk = false;
-//                 sendNextCommand();
-//             }
-//             // GRBL returns "error:" messages for errors
-//             else if (response.toLowerCase().includes("error")) {
-//                 console.error("❌ Error from GRBL:", response);
-//                 //socket.close();
-//                 //reject(new Error(response));
-//             }
-//             // Sometimes status or other messages — ignore or log
-//             else {
-//                 console.log("ℹ️ Message from GRBL:", response);
-//             }
-//         };
-
-//         function sendNextCommand() {
-//             if (awaitingOk) return; // Wait for current command to finish
-
-//             currentIndex++;
-//             if (currentIndex >= commandQueue.length) {
-//                 console.log("✅ All commands sent");
-//                 socket.close();
-//                 return;
-//             }
-
-//             const cmd = commandQueue[currentIndex];
-//             if (cmd && cmd.length > 0) {
-//                 console.log(`📤 Sending [${currentIndex + 1}/${commandQueue.length}]: ${cmd}`);
-//                 socket.send(cmd + "\n"); // Ensure newline termination for GRBL
-//                 awaitingOk = true;
-//             } else {
-//                 // Skip empty lines immediately
-//                 sendNextCommand();
-//             }
-//         }
-
-//         socket.onclose = () => {
-//             console.log("🛑 WebSocket closed");
-//             resolve();
-//         };
-
-//         socket.onerror = (err) => {
-//             console.error("❌ WebSocket error:", err);
-//             reject(err);
-//         };
-//     });
-// }
-
-
 export async function sendGcodeToESP(gcode: string): Promise<void> {
-    const espUrl = "ws://192.168.8.150:81"; // Updated ESP32 WebSocket address
-; // ESP32 WebSocket address
+    const espUrl = "ws://192.168.8.103:81"; // ESP32 WebSocket address
     const lines = gcode
         .split("\n")
         .map(line => line.trim())
@@ -509,7 +427,7 @@ export async function sendGcodeToESP(gcode: string): Promise<void> {
         const commandQueue = [
             "$X", // Unlock GRBL (clear alarm)
             "$20=0",
-            "$21=1",
+            "$21=0",
             ...lines         // Append actual G-code lines from input
         ];
 
@@ -538,7 +456,7 @@ export async function sendGcodeToESP(gcode: string): Promise<void> {
             }
             // Sometimes status or other messages — ignore or log
             else {
-                console.log("ℹ Message from GRBL:", response);
+                console.log("ℹ️ Message from GRBL:", response);
             }
         };
 
@@ -555,7 +473,6 @@ export async function sendGcodeToESP(gcode: string): Promise<void> {
             const cmd = commandQueue[currentIndex];
             if (cmd && cmd.length > 0) {
                 console.log(`📤 Sending [${currentIndex + 1}/${commandQueue.length}]: ${cmd}`);
-
                 socket.send(cmd + "\n"); // Ensure newline termination for GRBL
                 awaitingOk = true;
             } else {

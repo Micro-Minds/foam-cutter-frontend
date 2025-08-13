@@ -1,25 +1,53 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { toBase64 } from "../service/convertImageToBase64.ts";
+import { toBase64 } from "../service/convertImageToBase64";
 
-export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
-    const handleChange = (e) => {
+interface LibraryItemFormData {
+    title: string;
+    time: number;
+    feedRate: number;
+    stepSize: number;
+    size:number;
+    description: string;
+    image: string;
+    gcode: string;
+}
+
+interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onSubmit: () => void;
+    formData: LibraryItemFormData;
+    setFormData: React.Dispatch<React.SetStateAction<LibraryItemFormData>>;
+}
+
+export function Modal({
+                          isOpen,
+                          onClose,
+                          onSubmit,
+                          formData,
+                          setFormData,
+                      }: ModalProps) {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         const { name, value } = e.target;
+
         setFormData({
             ...formData,
-            [name]: value
+            [name]:
+                e.target.type === "number" ? parseFloat(value) || 0 : value,
         });
     };
 
-    const handleFileChange = async (event) => {
-        const file = event.target.files[0];
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
         if (!file) return;
 
         try {
             const base64 = await toBase64(file);
-            console.log(base64)
             setFormData({
                 ...formData,
-                image: base64
+                image: base64,
             });
         } catch (error) {
             console.error("Error converting file:", error);
@@ -60,10 +88,12 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                             }}
                             className="px-6 pb-6 space-y-4 overflow-y-auto max-h-[70vh]"
                         >
-                            {/* Row: Title, Time, Feed Rate */}
+                            {/* Row: Title, Time, Feed Rate, Size */}
                             <div className="grid grid-cols-3 gap-3">
                                 <div>
-                                    <label className="block text-sm font-medium text-green-700">Title</label>
+                                    <label className="block text-sm font-medium text-green-700">
+                                        Title
+                                    </label>
                                     <input
                                         type="text"
                                         name="title"
@@ -75,7 +105,9 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-green-700">Time (Minutes)</label>
+                                    <label className="block text-sm font-medium text-green-700">
+                                        Time (Minutes)
+                                    </label>
                                     <input
                                         type="number"
                                         name="time"
@@ -87,7 +119,9 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-green-700">Feed Rate</label>
+                                    <label className="block text-sm font-medium text-green-700">
+                                        Feed Rate
+                                    </label>
                                     <input
                                         type="number"
                                         name="feedRate"
@@ -99,7 +133,9 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-green-700">Size</label>
+                                    <label className="block text-sm font-medium text-green-700">
+                                        Size
+                                    </label>
                                     <input
                                         type="number"
                                         name="stepSize"
@@ -109,12 +145,13 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                         required
                                     />
                                 </div>
-
                             </div>
 
                             {/* Description */}
                             <div>
-                                <label className="block text-sm font-medium text-green-700">Description</label>
+                                <label className="block text-sm font-medium text-green-700">
+                                    Description
+                                </label>
                                 <textarea
                                     name="description"
                                     value={formData.description}
@@ -127,7 +164,9 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
 
                             {/* Image */}
                             <div>
-                                <label className="block text-sm font-medium text-green-700">Image</label>
+                                <label className="block text-sm font-medium text-green-700">
+                                    Image
+                                </label>
                                 <input
                                     type="file"
                                     name="image"
@@ -148,9 +187,11 @@ export function Modal({ isOpen, onClose, onSubmit, formData, setFormData }) {
                                 )}
                             </div>
 
-                            {/* G code */}
+                            {/* G-code */}
                             <div>
-                                <label className="block text-sm font-medium text-green-700">G code</label>
+                                <label className="block text-sm font-medium text-green-700">
+                                    G code
+                                </label>
                                 <input
                                     type="text"
                                     name="gcode"
