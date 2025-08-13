@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineBars, AiOutlineClose } from "react-icons/ai";
-import logo from "../assets/logo.jpg"; 
+import logo from "../assets/logo.png"; 
 
 export function Navigation() {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);                          
@@ -43,6 +43,7 @@ export function Navigation() {
                         <ul className="space-y-1 px-6 py-6 text-lg">
                             <li><Link to="/app/home" onClick={closeMobileMenu} className="block hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg transition-all duration-200">Home</Link></li>
                             <li><Link to="/app/library" onClick={closeMobileMenu} className="block hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg transition-all duration-200">Library</Link></li>
+                            <li><Link to="/app/video" onClick={closeMobileMenu} className="block hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg transition-all duration-200">Video</Link></li>
                             {/* <li><Link to="/app/history" onClick={closeMobileMenu} className="block hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg transition-all duration-200">History</Link></li> */}
                             <li><Link to="/app/about" onClick={closeMobileMenu} className="block hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg transition-all duration-200">About</Link></li>
                             <li><Link to="/app/review" onClick={closeMobileMenu} className="block hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg transition-all duration-200">Review</Link></li>
@@ -56,6 +57,7 @@ export function Navigation() {
                 <div className="hidden sm:flex items-center space-x-2">                                  {/* Hide this on all screens then display flex on sm(>640px)*/}  
                     <Link to="/app/home" className="hover:text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-lg transition-all duration-200 font-medium">Home</Link>
                     <Link to="/app/library" className="hover:text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-lg transition-all duration-200 font-medium">Library</Link>
+                    <Link to='/app/video' className="hover:text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-lg transition-all duration-200 font-medium">Video</Link>
                     {/* <Link to="/app/history" className="hover:text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-lg transition-all duration-200 font-medium">History</Link> */}
                     <Link to="/app/about" className="hover:text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-lg transition-all duration-200 font-medium">About</Link>
                     <Link to="/app/review" className="hover:text-emerald-600 hover:bg-emerald-50 px-4 py-2 rounded-lg transition-all duration-200 font-medium">Review</Link>
@@ -69,4 +71,3 @@ export function Navigation() {
         </>
     );
 };  
-

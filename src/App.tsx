@@ -7,6 +7,7 @@ import {HomePage } from "./pages/HomePage";
 import {LibraryPage } from './pages/LibraryPage.tsx';
 import {HistoryPage} from "./pages/HistoryPage.tsx";
 import {AboutPage} from "./pages/AboutPage.tsx";
+import {VideoPage} from "./pages/VideoPage.tsx";
 // import {ReviewPage} from "./pages/ReviewPage.tsx";
 import {ReviewsPage} from "./pages/ReviewsPage.tsx"; 
 import {SignUp} from "./pages/SignUp.tsx";
@@ -32,6 +33,7 @@ function App() {
                 { path: "history", element: <HistoryPage /> },  
                 { path: "about", element: <AboutPage /> },    
                 { path: "review", element: <ReviewsPage /> },
+                { path: "video", element: <VideoPage /> }
             ],
         },
     ]);
