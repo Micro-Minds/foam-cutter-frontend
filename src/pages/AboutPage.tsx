@@ -56,7 +56,7 @@ export function AboutPage() {
       </div>
 
       {/* Team Section */}
-      <div className="max-w-4xl mx-auto mt-16 pb-16 bg-[#e5dfd5]">
+      <div className="max-w-4xl mx-auto mt-16 pb-16">
         <h2 className="text-3xl font-bold mb-10 text-gray-800">Meet Our Team - MicroMinds</h2>
         <p className="text-gray-700 mb-8 px-4 md:px-0">
           We are MicroMinds, a team of passionate 1st-year IT students from the University of Moratuwa.
