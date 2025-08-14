@@ -9,6 +9,8 @@ import {useEffect, useState} from "react";
 import {sendGcodeToESP} from "../service/sendGCodeToEsp.ts";
 import {Modal} from "../components/Modal.tsx";
 import JobCard from "../components/JobCard.tsx";
+import {LibraryItem} from "../interfaces/LibraryItem.ts";
+
 
 export const STAR_5: string = `G21
 G90
@@ -620,7 +622,6 @@ G92 X0 Y0 Z0 ; Set current position as 0`;*/
 
 export function LibraryPage() {
 
-
     const [isModalOpen, setModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         gcode:"",
@@ -632,11 +633,11 @@ export function LibraryPage() {
         stepSize:1,
         time: 1
     });
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<LibraryItem[]>([]);
 
     useEffect(() => {
         async function fetchData() {
-            const result:any= await getAllLibraryItems();
+            const result:LibraryItem[]= await getAllLibraryItems();
             setItems(result);
             console.log(items);
         }

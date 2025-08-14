@@ -1,5 +1,6 @@
 import {setDoc,getDocs, updateDoc, deleteDoc,collection, doc, serverTimestamp} from "firebase/firestore";
 import { db } from "../firebase";
+import {LibraryItem} from "../interfaces/LibraryItem.ts";
 
 
 export function saveNewLibraryItem(
@@ -57,16 +58,22 @@ export async function updateLibraryItem(
 }
 
 
-export async function getAllLibraryItems() {
+export async function getAllLibraryItems(): Promise<LibraryItem[]> {
     const querySnapshot = await getDocs(collection(db, "library"));
-
-    const items = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    }));
-
+    const items: LibraryItem[] = querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+            id: doc.id,
+            title: data.title || "",
+            feedRate: data.feedRate || 100,
+            time: data.time || "0 minutes",
+            size: data.size || "N/A",
+            description: data.description || "",
+            gcode: data.gcode || "",
+            image: data.image || "",
+        };
+    });
     console.log(items);
-
     return items;
 }
 
