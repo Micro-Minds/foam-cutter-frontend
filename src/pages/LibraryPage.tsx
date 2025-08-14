@@ -677,7 +677,6 @@ export function LibraryPage() {
             backdrop: true,
             customClass: {
                 title: 'text-xl font-semibold text-green-800', // Customize title font
-                content: 'text-gray-700', // Customize content font
             }
         });
 
