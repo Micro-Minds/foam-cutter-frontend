@@ -6,7 +6,7 @@ interface LibraryItemFormData {
     time: number;
     feedRate: number;
     stepSize: number;
-    size:number;
+    size:string;
     description: string;
     image: string;
     gcode: string;
@@ -134,12 +134,27 @@ export function Modal({
 
                                 <div>
                                     <label className="block text-sm font-medium text-green-700">
-                                        Size
+                                        Step Size
                                     </label>
                                     <input
                                         type="number"
                                         name="stepSize"
                                         value={formData.stepSize}
+                                        onChange={handleChange}
+                                        className="mt-1 w-full border border-green-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        required
+                                    />
+                                </div>
+
+
+                                <div>
+                                    <label className="block text-sm font-medium text-green-700">
+                                       Size (height *  width)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="size"
+                                        value={formData.size}
                                         onChange={handleChange}
                                         className="mt-1 w-full border border-green-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                                         required
