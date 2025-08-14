@@ -11,7 +11,7 @@ export const Footer = () => {
                     <ul className="space-y-1">
                         <li><Link to="/app/home" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">Home</Link></li>
                         <li><Link to="/app/library" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">Library</Link></li>
-                        <li><Link to="/app/video" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">Video</Link></li>
+                        <li><Link to="/app/ourwork" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">Our Work</Link></li>
                         {/* <li><Link to="/app/history" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">History</Link></li> */}
                         <li><Link to="/app/about" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">About</Link></li>
                         <li><Link to="/app/review" className="hover:text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded-lg transition-all duration-200">Review</Link></li>
