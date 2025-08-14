@@ -725,7 +725,7 @@ export function LibraryPage() {
     ];*/
 
     return (
-        <div className="bg-[#e5dfd5] min-h-screen p-8">
+        <div className="bg-[#f0ede7] min-h-screen p-8">
             <div className="flex justify-between items-center mb-8">
               {/*  <h1 className="text-3xl font-bold text-center w-full">Design Library</h1>*/}
                 <button

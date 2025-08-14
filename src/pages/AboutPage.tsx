@@ -8,7 +8,7 @@ import member4 from "../assets/Mask group (4).png";
 
 export function AboutPage() {
   return (
-    <div className="bg-[#e5dfd5] min-h-screen pt-10 px-4 text-center">
+    <div className="bg-[#f0ede7]min-h-screen pt-10 px-4 text-center">
       <h1 className="text-3xl md:text-4xl font-bold tracking-widest mb-2">
         Why Choose Us
       </h1>

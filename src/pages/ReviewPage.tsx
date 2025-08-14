@@ -4,7 +4,7 @@ import sophia from "../assets/sophia.png";
 
 export function ReviewPage() {
   return (
-    <div className="bg-[#e5dfd5] min-h-screen pt-10 px-4 text-center">
+    <div className="bg-[#f0ede7] min-h-screen pt-10 px-4 text-center">
       {/* Heading */}
       <p className="text-gray-600 text-lg">Testimonials</p>
       <h1 className="text-3xl md:text-4xl font-bold mb-10">

@@ -21,7 +21,7 @@ export function ReviewsPage() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen py-12 px-4">
+    <div className="bg-[#f0ede7] from-slate-50 to-slate-100 min-h-screen py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
