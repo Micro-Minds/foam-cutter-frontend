@@ -2,13 +2,13 @@ import React from "react";
 
 interface JobCardProps {
     title: string;
-    imageUrl: string; // new: image at top
+    imageUrl: string;
     description: string;
     gcode: string;
     feedRate: number;
-    estimatedTime: number; // in minutes
-    size: string; // example: "200x150 mm"
-    onSend: () => void; // callback for print
+    estimatedTime: number;
+    size: string;
+    onSend: () => void;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
@@ -27,35 +27,41 @@ const JobCard: React.FC<JobCardProps> = ({
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition flex flex-col">
+        <div className="bg-white rounded-2xl shadow-lg border border-green-100 hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out overflow-hidden font-sans">
             {/* Image */}
-            <img
-                src={imageUrl}
-                alt={title}
-                className="w-full h-40 object-cover rounded-t-xl"
-            />
+            <div className="w-full bg-white p-3 flex justify-center items-center border-b border-green-100">
+                <img
+                    src={imageUrl}
+                    alt={title}
+                    className="max-h-64 w-auto object-contain"
+                />
+            </div>
 
             {/* Content */}
-            <div className="p-4 flex flex-col flex-grow">
-                <h3 className="text-lg font-bold text-green-800">{title}</h3>
-                {description && (
-                    <p className="text-gray-600 text-sm mb-2">{description}</p>
-                )}
-                <p className="text-gray-700 text-sm"><b>Feed Rate:</b> {feedRate} mm/min</p>
-                <p className="text-gray-700 text-sm"><b>Estimated Time:</b> {estimatedTime} min</p>
-                <p className="text-gray-700 text-sm"><b>Size:</b> {size}</p>
+            <div className="p-5 flex flex-col h-full">
+                <h3 className="text-xl font-semibold text-green-700 mb-1">{title}</h3>
 
-                {/* Buttons */}
-                <div className="mt-auto flex gap-2 pt-4">
+                {description && (
+                    <p className="text-gray-600 text-sm mb-3 leading-snug">{description}</p>
+                )}
+
+                <div className="space-y-1 text-sm text-gray-700">
+                    <p><span className="font-medium text-green-800">Feed Rate:</span> {feedRate} mm/min</p>
+                    <p><span className="font-medium text-green-800">Estimated Time:</span> {estimatedTime} min</p>
+                    <p><span className="font-medium text-green-800">Size:</span> {size}</p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="mt-5 flex gap-3">
                     <button
                         onClick={handleCopyGCode}
-                        className="bg-gray-200 hover:bg-gray-300 text-sm px-3 py-1 rounded-lg"
+                        className="flex-1 px-4 py-2 text-sm font-medium text-green-700 border border-green-300 rounded-lg hover:bg-green-50 transition"
                     >
                         Copy G-code
                     </button>
                     <button
                         onClick={onSend}
-                        className="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-1 rounded-lg"
+                        className="flex-1 px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition"
                     >
                         Send to Print
                     </button>

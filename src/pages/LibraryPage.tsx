@@ -635,22 +635,25 @@ export function LibraryPage() {
     });
     const [items, setItems] = useState<LibraryItem[]>([]);
 
+    async function fetchData() {
+        const result:LibraryItem[]= await getAllLibraryItems();
+        setItems(result);
+        console.log(items);
+    }
     useEffect(() => {
-        async function fetchData() {
-            const result:LibraryItem[]= await getAllLibraryItems();
-            setItems(result);
-            console.log(items);
-        }
         fetchData();
     }, []);
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         console.log("Submitted:", formData);
         setModalOpen(false);
         const id = await getNextLibraryId();
         const ref = saveNewLibraryItem(id, formData.gcode, formData.feedRate, formData.size, formData.stepSize,
             formData.time, formData.image, formData.title, formData.description)
         console.log(ref);
+        fetchData();
+
 
     };
 
@@ -685,44 +688,6 @@ export function LibraryPage() {
         }
     };*/
 
-/*    const designs = [
-        {
-            title: "FIT 23",
-            image: design1,
-            description:
-                "The official logo of the Faculty of Information Technology, Batch 23. A perfect commemorative design for events or souvenirs.",
-            size: "200mm × 150mm",
-            time: "8 minutes",
-            feedRate: "1200 mm/min",
-        },
-        {
-            title: "Ballet Girl",
-            image: design2,
-            description:
-                "An elegant silhouette of a ballet dancer. Ideal for wall art or creative décor, cut smoothly with the hot wire CNC.",
-            size: "180mm × 180mm",
-            time: "12 minutes",
-            feedRate: "1000 mm/min",
-        },
-        {
-            title: "Chess Pawn",
-            image: chess,
-            description:
-                "A classic chess pawn silhouette, great for educational models or decorative pieces. Easy to cut with precise edges.",
-            size: "160mm × 100mm",
-            time: "6 minutes",
-            feedRate: "1100 mm/min",
-        },
-        {
-            title: "Horse Silhouette",
-            image: horseImage,
-            description:
-                "A bold and dynamic silhouette of a horse. Perfect for decorative or artistic CNC cuts with detailed curves and edges.",
-            size: "220mm × 170mm",
-            time: "10 minutes",
-            feedRate: "1100 mm/min",
-        }
-    ];*/
 
     return (
         <div className="bg-[#f0ede7] min-h-screen p-8">
@@ -766,54 +731,6 @@ export function LibraryPage() {
                 </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-               {/* {designs.map((design, index) => (
-                    <div
-                        key={index}
-                        className="bg-white shadow-md rounded-lg p-4 w-full max-w-[320px] mx-auto sm:mx-0 transform transition duration-300 hover:shadow-xl hover:scale-[1.02]"
-
-                    >
-                        <img
-                            src={design.image}
-                            alt={design.title}
-                            className="w-full h-36 object-contain rounded bg-white"
-                        />
-
-                        <h2 className="text-xl font-semibold mt-4 mb-2">{design.title}</h2>
-                        <p className="text-gray-700 mb-2">{design.description}</p>
-                        <p className="text-sm text-gray-600">
-                            <strong>Size:</strong> {design.size}
-                        </p>
-                        <p className="text-sm text-gray-600">
-                            <strong>Approx. Time:</strong> {design.time}
-                        </p>
-                        <p className="text-sm text-gray-600">
-                            <strong>Feed Rate:</strong> {design.feedRate}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
-                            <button
-                                onClick={() => handleSend(design.title)}
-                                className="bg-green-600 text-white px-2 py-1 text-sm rounded hover:bg-green-700 transition"
-                            >
-                                Send to Print
-                            </button>
-                            <button
-                                onClick={() => handleUpdate(design.title)}
-                                className="bg-yellow-500 text-white px-2 py-1 text-sm rounded hover:bg-yellow-600 transition"
-                            >
-                                Update
-                            </button>
-                            <button
-                                onClick={() => handleDelete(design.title)}
-                                className="bg-red-600 text-white px-2 py-1 text-sm rounded hover:bg-red-700 transition"
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                ))}*/}
-            </div>
         </div>
     );
 }
