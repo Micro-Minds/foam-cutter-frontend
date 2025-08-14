@@ -1,10 +1,5 @@
 import design1 from "../assets/design1.jpg";
-import design2 from "../assets/design2.jpg";
-import chess from "../assets/chess.jpg";
-import horseImage from "../assets/horse.jpg";
-
 import {
-    deleteLibraryItem,
     getAllLibraryItems,
     saveNewLibraryItem,
 } from "../service/libraryService.ts";
@@ -13,6 +8,7 @@ import {getNextLibraryId} from "../service/genarateIDs.ts";
 import {useEffect, useState} from "react";
 import {sendGcodeToESP} from "../service/sendGCodeToEsp.ts";
 import {Modal} from "../components/Modal.tsx";
+import JobCard from "../components/JobCard.tsx";
 
 export const STAR_5: string = `G21
 G90
@@ -632,7 +628,7 @@ export function LibraryPage() {
         description: "",
         image: "",
         feedRate: 100,
-        size:200,
+        size:"",
         stepSize:1,
         time: 1
     });
@@ -652,7 +648,7 @@ export function LibraryPage() {
         setModalOpen(false);
         const id = await getNextLibraryId();
         const ref = saveNewLibraryItem(id, formData.gcode, formData.feedRate, formData.size, formData.stepSize,
-            formData.time, formData.title, formData.description, formData.image)
+            formData.time, formData.image, formData.title, formData.description)
         console.log(ref);
 
     };
@@ -671,7 +667,7 @@ export function LibraryPage() {
     const handleAdd = async () => {
         setModalOpen(true);
     };
-
+/*
     const handleUpdate = (title: string) => {
         alert(`✏️ Update "${title}": Implement update form or modal here.`);
         // test update item function
@@ -686,9 +682,9 @@ export function LibraryPage() {
             const deleted = deleteLibraryItem("C013");
             console.log(deleted);
         }
-    };
+    };*/
 
-    const designs = [
+/*    const designs = [
         {
             title: "FIT 23",
             image: design1,
@@ -725,14 +721,12 @@ export function LibraryPage() {
             time: "10 minutes",
             feedRate: "1100 mm/min",
         }
-    ];
-
-
+    ];*/
 
     return (
         <div className="bg-[#e5dfd5] min-h-screen p-8">
             <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-center w-full">Design Library</h1>
+              {/*  <h1 className="text-3xl font-bold text-center w-full">Design Library</h1>*/}
                 <button
                     onClick={handleAdd}
                     className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition ml-4 min-w-[160px] text-center"
@@ -750,8 +744,29 @@ export function LibraryPage() {
                 setFormData={setFormData}
             />
 
+
+            {items.length === 0 ? (
+                <p>No designs in the library.</p>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {items.map((item) => (
+                        <JobCard
+                            key={item.id}
+                            title={item.title}
+                            feedRate={item.feedRate}
+                            estimatedTime={item.time}
+                            size={item.size}
+                            description={item.description}
+                            gcode={item.gcode}
+                            imageUrl={item.image || design1}
+                            onSend={() => handleSend(item.gcode)}
+                        />
+                    ))}
+                </div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {designs.map((design, index) => (
+               {/* {designs.map((design, index) => (
                     <div
                         key={index}
                         className="bg-white shadow-md rounded-lg p-4 w-full max-w-[320px] mx-auto sm:mx-0 transform transition duration-300 hover:shadow-xl hover:scale-[1.02]"
@@ -796,7 +811,7 @@ export function LibraryPage() {
                             </button>
                         </div>
                     </div>
-                ))}
+                ))}*/}
             </div>
         </div>
     );
