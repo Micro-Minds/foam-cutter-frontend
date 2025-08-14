@@ -10,7 +10,10 @@ import {sendGcodeToESP} from "../service/sendGCodeToEsp.ts";
 import {Modal} from "../components/Modal.tsx";
 import JobCard from "../components/JobCard.tsx";
 import {LibraryItem} from "../interfaces/LibraryItem.ts";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const MySwal = withReactContent(Swal)
 
 export const STAR_5: string = `G21
 G90
@@ -658,12 +661,26 @@ export function LibraryPage() {
     };
 
 
+
     const handleSend = async (title: string) => {
 
         //updateFeedRateAndStepSize(STAR_5, 1, 400);
-        alert(
-            `⚠️ Preparing to print "${title}"\n\nPlease ensure the CNC is connected and the rigifoam is properly held before starting the print.`
-        );
+        MySwal.fire({
+            title: `⚠️ Preparing to print "${title}"`,
+            text: 'Please ensure the CNC is connected and the rigifoam is properly held before starting the print.',
+            icon: 'warning',
+            confirmButtonText: 'Got it!',
+            confirmButtonColor: '#3085d6',
+            background: '#f4f4f9',
+            iconColor: '#f39c12',
+            showCloseButton: true,
+            backdrop: true,
+            customClass: {
+                title: 'text-xl font-semibold text-green-800', // Customize title font
+                content: 'text-gray-700', // Customize content font
+            }
+        });
+
         await sendGcodeToESP(horse);
 
     };
@@ -691,11 +708,10 @@ export function LibraryPage() {
 
     return (
         <div className="bg-[#f0ede7] min-h-screen p-8">
-            <div className="flex justify-between items-center mb-8">
-              {/*  <h1 className="text-3xl font-bold text-center w-full">Design Library</h1>*/}
+            <div className="flex justify-center sm:justify-end items-center mb-8">
                 <button
                     onClick={handleAdd}
-                    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition ml-4 min-w-[160px] text-center"
+                    className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg hover:bg-gradient-to-r hover:from-green-600 hover:to-green-900 transition-all duration-300 ease-in-out sm:w-[200px] w-full text-center font-semibold shadow-lg transform hover:scale-105"
                 >
                     + Add Design
                 </button>
@@ -725,7 +741,7 @@ export function LibraryPage() {
                             description={item.description}
                             gcode={item.gcode}
                             imageUrl={item.image || design1}
-                            onSend={() => handleSend(item.gcode)}
+                            onSend={() => handleSend(item.title)}
                         />
                     ))}
                 </div>

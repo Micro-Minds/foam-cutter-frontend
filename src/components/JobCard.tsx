@@ -1,4 +1,8 @@
 import React from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal);
 
 interface JobCardProps {
     title: string;
@@ -22,8 +26,28 @@ const JobCard: React.FC<JobCardProps> = ({
                                              onSend
                                          }) => {
     const handleCopyGCode = () => {
-        navigator.clipboard.writeText(gcode);
-        alert("G-code copied to clipboard!");
+        navigator.clipboard.writeText(gcode)
+            .then(() => {
+                MySwal.fire({
+                    icon: 'success',
+                    title: 'G-code copied!',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#3085d6',
+                    background: '#f4f4f9',
+                    iconColor: '#2ecc71',
+                });
+            })
+            .catch(() => {
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Failed to copy!',
+                    text: 'Something went wrong while copying the G-code to clipboard.',
+                    confirmButtonText: 'Close',
+                    confirmButtonColor: '#d33',
+                    background: '#f4f4f9',
+                    iconColor: '#e74c3c',
+                });
+            });
     };
 
     return (
