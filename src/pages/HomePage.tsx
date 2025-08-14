@@ -95,14 +95,14 @@ export const HomePage = () => {
           </div>
           <br /><br />
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          {/* <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <button
                 onClick={() => setShowShapeForm(!showShapeForm)}
                 className="bg-green-300 hover:bg-green-400 text-black font-medium py-2 px-6 rounded-lg shadow"
             >
               Select Shape <span className="ml-2">▼</span>
             </button>
-          </div>
+          </div> */}
 
           {showShapeForm && (
               <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-md text-left space-y-4">
