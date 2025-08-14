@@ -3,7 +3,7 @@ import React from "react";
 interface JobCardProps {
     title: string;
     imageUrl: string; // new: image at top
-    description?: string;
+    description: string;
     gcode: string;
     feedRate: number;
     estimatedTime: number; // in minutes
