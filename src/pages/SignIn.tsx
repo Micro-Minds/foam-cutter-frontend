@@ -1,23 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.jpg";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../firebase.ts";
+
 
 export function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSignIn = (e: React.FormEvent) => {
+    const handleSignIn = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const hardcodedEmail = "microminds@gmail.com";
-        const hardcodedPassword = "12345";
-
-        if (email === hardcodedEmail && password === hardcodedPassword) {
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
             console.log("Login successful");
             navigate("/app/home");
-        } else {
-            alert("Invalid email or password");
+        } catch (error: any) {
+            alert(error.message);
         }
     };
 
