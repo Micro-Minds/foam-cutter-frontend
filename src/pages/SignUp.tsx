@@ -31,7 +31,7 @@ export function SignUp() {
     return (
         <div className="flex min-h-screen">
             {/* Image */}
-            <div className="w-1/2 hidden md:flex items-center justify-center bg-blue-100">
+            <div className="w-1/2 hidden md:flex items-center justify-center bg-green-100">
                 <img
                     src={logo}
                     alt="Business"
@@ -42,7 +42,7 @@ export function SignUp() {
             {/* Sign-Up Form */}
             <div className="w-full md:w-1/2 flex items-center justify-center bg-white p-8">
                 <div className="w-full max-w-md">
-                    <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">Sign Up</h2>
+                    <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Sign Up</h2>
 
                     <form className="space-y-5" onSubmit={handleSignUp}>
                         <div>
@@ -89,7 +89,7 @@ export function SignUp() {
 
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                            className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors"
                         >
                             Sign Up
                         </button>
@@ -97,7 +97,7 @@ export function SignUp() {
 
                     <p className="text-sm text-center text-gray-500 mt-4">
                         Already have an account?{" "}
-                        <a href="/signin" className="text-blue-700 font-medium hover:underline">Sign in</a>
+                        <a href="/signin" className="text-green-700 font-medium hover:underline">Sign in</a>
                     </p>
                 </div>
             </div>
