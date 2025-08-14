@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.jpg"; // using the same image for consistency
+import logo from "../assets/logo.jpg";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 export function SignUp() {
     const [email, setEmail] = useState("");
@@ -8,20 +10,27 @@ export function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSignUp = (e: React.FormEvent) => {
+    const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault();
+
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return;
         }
-        console.log("Signing up", { email, password });
-        //signup logic
-        navigate("/");
+
+        try {
+            // Create user in Firebase Auth
+            await createUserWithEmailAndPassword(auth, email, password);
+            console.log("User signed up successfully");
+            navigate("/");
+        } catch (error: any) {
+            alert(error.message);
+        }
     };
 
     return (
         <div className="flex min-h-screen">
-            {/* Image*/}
+            {/* Image */}
             <div className="w-1/2 hidden md:flex items-center justify-center bg-blue-100">
                 <img
                     src={logo}
