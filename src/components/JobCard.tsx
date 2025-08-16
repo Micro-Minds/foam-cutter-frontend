@@ -26,18 +26,29 @@ const JobCard: React.FC<JobCardProps> = ({
                                              onSend
                                          }) => {
     const handleCopyGCode = () => {
-        navigator.clipboard.writeText(gcode)
+        // Format G-code with proper line breaks
+        // Split by common G-code line separators and rejoin with proper line breaks
+        const formattedGCode = gcode
+            .replace(/;/g, ';\n')  // Add line break after comments
+            .replace(/\n\s*\n/g, '\n')  // Remove multiple empty lines
+            .replace(/([GM]\d+)/g, '\n$1')  // Add line break before G and M commands
+            .replace(/^\n/, '')  // Remove leading line break
+            .trim();
+
+        navigator.clipboard.writeText(formattedGCode)
             .then(() => {
                 MySwal.fire({
                     icon: 'success',
                     title: 'G-code copied!',
+                    text: 'G-code has been formatted and copied to clipboard.',
                     confirmButtonText: 'Ok',
                     confirmButtonColor: '#3085d6',
                     background: '#f4f4f9',
                     iconColor: '#2ecc71',
                 });
             })
-            .catch(() => {
+            .catch((error) => {
+                console.error('Copy failed:', error);
                 MySwal.fire({
                     icon: 'error',
                     title: 'Failed to copy!',
@@ -49,7 +60,6 @@ const JobCard: React.FC<JobCardProps> = ({
                 });
             });
     };
-
     return (
         <div className="bg-white rounded-2xl shadow-lg border border-green-100 hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out overflow-hidden font-sans">
             {/* Image */}
