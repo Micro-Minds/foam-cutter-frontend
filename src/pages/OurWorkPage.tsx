@@ -4,23 +4,23 @@ export function OurWorkPage() {
   const videos = [
     { 
       title: "3D Tower", 
-      src:"https://drive.google.com/file/d/1k6evCB6H6tYyzPdpykH0gLMgjUYPQkqI/preview?autoplay=1&mute=1"
+      src:"https://www.youtube.com/embed/1fuCSezrm5I?autoplay=1&mute=1"
     },
     { 
       title: "Running Horse", 
-      src: "https://drive.google.com/file/d/1MhBQ2lTmgk_5EzrcfWvN-y2Ip9xDG8q0/preview?autoplay=1&mute=1" 
+      src: "https://www.youtube.com/embed/i3_p_yX5l7o?autoplay=1&mute=1"
     },
     { 
       title: "Grill Design", 
-      src: "https:drive.google.com/file/d/14MCPqXfggTstIff6f4s_NLH4QEiKoP85/preview?autoplay=1&mute=1"
+      src: "https://www.youtube.com/embed/Lq4AcK9nT6k?autoplay=1&mute=1"
     },
     { 
       title: "Ballet Girl", 
-      src: "https://drive.google.com/file/d/1LFcLKo2QfOspBgsvcjTbn2SCtbiLSYqb/preview?autoplay=1&mute=1"
+      src: "https://www.youtube.com/embed/vh9zKYgFbrQ?autoplay=1&mute=1"
     },
     { 
       title: "Large Tower", 
-      src: "https://drive.google.com/file/d/1Y4z2AzGbNhhutzvKzgg947NtDm9u2jFX/preview?autoplay=1&mute=1"
+      src: "https://www.youtube.com/embed/_TpnqH4TMIA?autoplay=1&mute=1"
 
     }
 
